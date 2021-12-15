@@ -1,15 +1,16 @@
 #include <string>
 #include "Player.h"
 #include "Pokimac.h"
+#include "Map.h"
+#include "../../libs/consoleUtils.hpp"
 
 using namespace std;
 
-Player::Player() {
+Player::Player(Map *p_map) {
+  map = p_map;
   health = 100;
-}
-
-Player::Player(int nbHealth) {
-  health = nbHealth;
+  x = 0;
+  y = 0;
 }
 
 // Name
@@ -42,4 +43,36 @@ void Player::setDamage(int nbDamage) {
 
 void Player::attack(Pokimac &pokimac) {
   pokimac.setDamage(30);
+}
+
+// Map
+
+void Player::move(char dir) {
+  consoleUtils::setCursorPos(x, y); std::cout << ' ';
+  switch (dir) {
+  case 'N':
+    if(y > 0) {
+      y--;
+    }
+    break;
+  case 'E':
+    if(x < SIZE_MAP) {
+      x++;
+    }
+    break;
+  case 'S':
+    if(y < SIZE_MAP) {
+      y++;
+    }
+    break;
+  case 'W':
+    if(x > 0) {
+      x--;
+    }
+    break;
+  
+  default:
+    break;
+  }
+  consoleUtils::setCursorPos(x, y); std::cout << 'P';
 }

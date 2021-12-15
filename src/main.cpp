@@ -11,8 +11,8 @@
 using namespace std;
 
 int main() {
-  Map map();
-  Player poki;
+  Map map;
+  Player poki(&map);
 
   cout << poki.getHealth() << endl;
   poki.setHealth(50); 
@@ -24,7 +24,7 @@ int main() {
   bool spaceHit = false;
   unsigned int cnt = 0;
 
-  consoleUtils::setCursorPos(x,y); std::cout << '@'; // first display
+  consoleUtils::setCursorPos(x,y); std::cout << 'P'; // first display
   while (!spaceHit) {
     
     consoleUtils::setCursorPos(8, 5); 
@@ -32,12 +32,11 @@ int main() {
 
     if (consoleUtils::kbhit()) { //if a key is pressed
       const char c = consoleUtils::getChar(); // Get character
-      consoleUtils::setCursorPos(x, y); std::cout << ' '; // clean
       switch (c) {
-        case 'z': --y; break;
-        case 's': ++y; break;
-        case 'q': --x; break;
-        case 'd': ++x; break;
+        case 'z': poki.move('N'); break;
+        case 's': poki.move('S'); break;
+        case 'q': poki.move('W'); break;
+        case 'd': poki.move('E'); break;
         case ' ': spaceHit = true; break;
         default: break;
       }

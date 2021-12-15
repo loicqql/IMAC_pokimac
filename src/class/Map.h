@@ -1,17 +1,19 @@
 #include <string>
-#define SIZE 4
+
+#define SIZE_MAP 20
+#define VOID 0
+#define PLAYER 1
+#define POKIMAC 2
+
 using namespace std;
 
 class Map {
-    private :
-        int map[SIZE];
-        int poki[SIZE];
-        int player[SIZE];
+	public:
+		Map();
 
-    public :
-        Map(){
-            map[SIZE]=(1,0,0,2);
-            poki[SIZE]=(NULL,NULL,NULL, NULL);
-            player[SIZE]=(NULL,NULL,NULL, NULL);
-        }
-    };
+	private:
+		int width = SIZE_MAP;
+		int height = SIZE_MAP;
+		int tab[SIZE_MAP*SIZE_MAP];
+		int const tab_size = SIZE_MAP*SIZE_MAP;
+};
