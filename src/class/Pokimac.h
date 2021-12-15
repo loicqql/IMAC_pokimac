@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 
 using namespace std;
@@ -6,7 +7,7 @@ class Pokimac {
 
   public:
     Pokimac();
-    Pokimac::Pokimac(int nbHealth);
+    Pokimac(int nbHealth);
 
     string getName();
     int getHealth();

@@ -1,5 +1,6 @@
 #include <string>
 #include "Player.h"
+#include "Pokimac.h"
 
 using namespace std;
 
@@ -35,4 +36,10 @@ void Player::setHealth(int nbHealth) {
 
 void Player::setDamage(int nbDamage) {
   health = health - nbDamage;
+}
+
+// Attack
+
+void Player::attack(Pokimac &pokimac) {
+  pokimac.setDamage(30);
 }
