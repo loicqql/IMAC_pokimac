@@ -9,5 +9,9 @@ class Map {
         int player[SIZE];
 
     public :
-        void init();
+        Map(){
+            map[SIZE]=(1,0,0,2);
+            poki[SIZE]=(NULL,NULL,NULL, NULL);
+            player[SIZE]=(NULL,NULL,NULL, NULL);
+        }
     };

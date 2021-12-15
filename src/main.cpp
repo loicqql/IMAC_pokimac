@@ -6,20 +6,18 @@
 #include <iomanip>
 #include "class/Player.h"
 #include "../libs/consoleUtils.hpp"
+#include "class/Map.h"
 
 using namespace std;
 
 int main() {
-  int taille=2;
+  Map map();
   Player poki;
 
   cout << poki.getHealth() << endl;
   poki.setHealth(50); 
 
   cout << poki.getHealth() << endl;
-
-
-  char tab[taille*taille]={1,0,0,2};
 
   int x = 7;
   int y = 7;
@@ -45,6 +43,7 @@ int main() {
       }
       consoleUtils::setCursorPos(x,y); std::cout << '@'; // display
     }
+
     // Wanning: this sleep somehow breaks the console print
     consoleUtils::sleep(1);
     ++cnt;
