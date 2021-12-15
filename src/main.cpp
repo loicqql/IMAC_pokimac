@@ -5,7 +5,7 @@
 #include <ctime>
 #include <iomanip>
 #include "class/Player.h"
-#include "libs/consoleUtils.hpp"
+#include "../libs/consoleUtils.hpp"
 
 using namespace std;
 
