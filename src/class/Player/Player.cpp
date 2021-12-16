@@ -1,8 +1,8 @@
 #include <string>
-#include "Player.h"
-#include "Pokimac.h"
-#include "Map.h"
-#include "../../libs/consoleUtils.hpp"
+#include "../Player/Player.h"
+#include "../Pokimac/Pokimac.h"
+#include "../Map/Map.h"
+#include "../../../libs/consoleUtils.hpp"
 
 using namespace std;
 

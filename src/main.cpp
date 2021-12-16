@@ -4,9 +4,9 @@
 #include <cstdio>
 #include <ctime>
 #include <iomanip>
-#include "class/Player.h"
+#include "class/Player/Player.h"
 #include "../libs/consoleUtils.hpp"
-#include "class/Map.h"
+#include "class/Map/Map.h"
 
 using namespace std;
 

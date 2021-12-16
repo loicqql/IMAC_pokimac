@@ -1,9 +1,9 @@
 #pragma once
 #include <string>
-#include "Pokimac.h"
-#include "Player.h"
-#include "Map.h"
-#include "../../libs/consoleUtils.hpp"
+#include "../Pokimac/Pokimac.h"
+#include "../Player/Player.h"
+#include "../Map/Map.h"
+#include "../../../libs/consoleUtils.hpp"
 
 using namespace std;
 
