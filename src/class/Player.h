@@ -14,14 +14,15 @@ class Player {
 
     string getName();
     int getHealth();
+    int getX();
+    int getY();
 
     void setName(string username);
     void setHealth(int nbHealth);
     void setDamage(int nbDamage);
 
     void attack(Pokimac &pokimac);
-
-    void Player::move(char dir);
+    void move(char dir);
     
   private:
     string name;
@@ -29,4 +30,7 @@ class Player {
     Map *map;
     int x;
     int y;
+
+    void clearCursor();
+    void setCursor();
 };

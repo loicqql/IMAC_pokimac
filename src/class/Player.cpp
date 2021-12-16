@@ -23,6 +23,16 @@ void Player::setName(string username) {
   name = username;
 }
 
+//Coords 
+
+int Player::getX() {
+  return x;
+}
+
+int Player::getY() {
+  return y;
+}
+
 // Health
 
 int Player::getHealth() {
@@ -48,7 +58,7 @@ void Player::attack(Pokimac &pokimac) {
 // Map
 
 void Player::move(char dir) {
-  consoleUtils::setCursorPos(x, y); std::cout << ' ';
+  clearCursor();
   switch (dir) {
   case 'N':
     if(y > 0) {
@@ -74,5 +84,13 @@ void Player::move(char dir) {
   default:
     break;
   }
-  consoleUtils::setCursorPos(x, y); std::cout << 'P';
+  setCursor();
+}
+
+void Player::clearCursor() {
+  ConsoleUtils::setCursorPos(x, y); std::cout << ' ';
+}
+
+void Player::setCursor() {
+  ConsoleUtils::setCursorPos(x, y); std::cout << 'P';
 }

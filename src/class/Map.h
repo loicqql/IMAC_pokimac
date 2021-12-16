@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 
 #define SIZE_MAP 20
