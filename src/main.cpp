@@ -21,35 +21,37 @@ int main() {
 
   int x = 7;
   int y = 7;
-  bool spaceHit = false;
+  bool exitLoop = false;
   unsigned int cnt = 0;
 
-  consoleUtils::setCursorPos(x,y); std::cout << 'P'; // first display
-  while (!spaceHit) {
+  ConsoleUtils::setCursorPos(x,y); std::cout << 'P'; // first display
+  while (!exitLoop) {
     
-    consoleUtils::setCursorPos(8, 5); 
+    ConsoleUtils::setCursorPos(8, 5); 
     std::cout << std::setfill('0') << std::setw(8) << cnt; // update cnt
 
-    if (consoleUtils::kbhit()) { //if a key is pressed
-      const char c = consoleUtils::getChar(); // Get character
+    if (ConsoleUtils::kbhit()) { //if a key is pressed
+      bool special = false;
+			int c = ConsoleUtils::getChar(&special); // Get character
+
+      ConsoleUtils::setCursorPos(18, 3); std::cout << (char)c << " - " << c << (special?" special Char":"             ");
+
+      ConsoleUtils::setCursorPos(x, y); std::cout << ' '; // clean
+
       switch (c) {
         case 'z': poki.move('N'); break;
         case 's': poki.move('S'); break;
         case 'q': poki.move('W'); break;
         case 'd': poki.move('E'); break;
-        case ' ': spaceHit = true; break;
+        case ' ': exitLoop = true; break;
         default: break;
       }
-      consoleUtils::setCursorPos(x,y); std::cout << '@'; // display
+      ConsoleUtils::setCursorPos(x,y); std::cout << '@'; // display
     }
-
-    // Wanning: this sleep somehow breaks the console print
-    consoleUtils::sleep(1);
     ++cnt;
-
   }
 
-  consoleUtils::clear();
+  ConsoleUtils::clear();
 
   return 0;
 }
