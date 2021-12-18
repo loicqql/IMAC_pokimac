@@ -6,6 +6,8 @@
 using namespace std;
 
 Map::Map() {
+
+  ConsoleUtils::clear();
   
   for (int i = 0; i < tab_size; i++) {
     tab[i] = VOID;
@@ -18,13 +20,11 @@ Map::Map() {
 }
 
 void Map::initDisplay() {
-  ConsoleUtils::clear();
   for (int i = 0; i < SIZE_MAP; i++) {
     for (int j = 0; j < SIZE_MAP; j++) {
       ConsoleUtils::setCursorPos(i,j); std::cout << getDisplayByCoords(i, j);
     }
   }
-  ConsoleUtils::setCursorPos(0,0);
 }
 
 char Map::getDisplayByCoords(int x, int y) {

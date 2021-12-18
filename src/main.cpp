@@ -14,17 +14,12 @@ int main() {
   Map map;
   Player poki(&map);
 
-  // cout << poki.getHealth() << endl;
-  // poki.setHealth(50); 
-
-  // cout << poki.getHealth() << endl;
-
   int x = poki.getX();
   int y = poki.getY();
   bool exitLoop = false;
 
   while (!exitLoop) {
-
+    ConsoleUtils::setCursorPos(21, 21);
     if (ConsoleUtils::kbhit()) { //if a key is pressed
       bool special = false;
 			int c = ConsoleUtils::getChar(&special); // Get character
