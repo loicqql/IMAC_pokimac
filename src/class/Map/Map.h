@@ -27,4 +27,5 @@ class Map {
 		int const tab_size = SIZE_MAP*SIZE_MAP;
 
 		void initDisplay();
+		void setupGrass();
 };
