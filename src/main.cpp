@@ -11,8 +11,6 @@
 using namespace std;
 
 int main() {
-  ConsoleUtils::clear();
-
   Map map;
   Player poki(&map);
 
@@ -24,8 +22,6 @@ int main() {
   int x = poki.getX();
   int y = poki.getY();
   bool exitLoop = false;
-
-  ConsoleUtils::setCursorPos(x,y); std::cout << 'P'; // first display
 
   while (!exitLoop) {
 

@@ -66,12 +66,12 @@ void Player::move(char dir) {
     }
     break;
   case 'E':
-    if(x < SIZE_MAP) {
+    if(x < SIZE_MAP - 1) {
       x++;
     }
     break;
   case 'S':
-    if(y < SIZE_MAP) {
+    if(y < SIZE_MAP - 1) {
       y++;
     }
     break;
@@ -88,7 +88,7 @@ void Player::move(char dir) {
 }
 
 void Player::clearCursor() {
-  ConsoleUtils::setCursorPos(x, y); std::cout << ' ';
+  ConsoleUtils::setCursorPos(x, y); std::cout << map->getDisplayByCoords(x, y);
 }
 
 void Player::setCursor() {
