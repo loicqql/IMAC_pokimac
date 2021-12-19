@@ -14,4 +14,7 @@ class Game {
 	private:
     Map map;
     Player *player;
+
+    void initPlayerAttack();
+
 };

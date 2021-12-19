@@ -28,6 +28,10 @@ void Map::initDisplay() {
   }
 }
 
+int Map::getValueCellByCoords(int x, int y) {
+  return tab[y * SIZE_MAP + x].getValue();
+}
+
 char Map::getDisplayByCoords(int x, int y) {
   char charDisplay;
   switch (tab[y * SIZE_MAP + x].getValue()) {
