@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-Wall -ansi
 
-pokimac: build/main.o build/map.o build/player.o build/pokimac.o
+pokimac: build/main.o build/map.o build/player.o build/pokimac.o build/cell.o
 	$(CC) -o $@ $^
 
 build/main.o: src/main.cpp
@@ -14,6 +14,9 @@ build/player.o: src/class/Player/Player.cpp src/class/Player/Player.h
 	$(CC) -o $@ -c $<
 
 build/pokimac.o: src/class/Pokimac/Pokimac.cpp src/class/Pokimac/Pokimac.h 
+	$(CC) -o $@ -c $<
+
+build/cell.o: src/class/Map/Cell/Cell.cpp src/class/Map/Cell/Cell.h
 	$(CC) -o $@ -c $<
 
 clean: 

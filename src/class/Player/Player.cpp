@@ -11,6 +11,7 @@ Player::Player(Map *p_map) {
   health = 100;
   x = 0;
   y = 0;
+  exp = 5;
 }
 
 // Name
@@ -92,5 +93,5 @@ void Player::clearCursor() {
 }
 
 void Player::setCursor() {
-  ConsoleUtils::setCursorPos(x, y); std::cout << 'P';
+  ConsoleUtils::setCursorPos(x, y); std::cout << DISPLAY_PLAYER;
 }

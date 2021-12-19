@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "Cell/Cell.h"
 
 #define SIZE_MAP 20
 #define VOID 0
@@ -8,8 +9,8 @@
 
 #define DISPLAY_VOID '.'
 #define DISPLAY_GRASS '#'
-#define DISPLAY_PLAYER 'P'
-#define DISPLAY_POKIMAC 'I'
+#define DISPLAY_PLAYER '@'
+#define DISPLAY_POKIMAC 'P'
 
 
 using namespace std;
@@ -23,9 +24,10 @@ class Map {
 	private:
 		int width = SIZE_MAP;
 		int height = SIZE_MAP;
-		int tab[SIZE_MAP*SIZE_MAP];
+		Cell tab[SIZE_MAP*SIZE_MAP];
 		int const tab_size = SIZE_MAP*SIZE_MAP;
 
 		void initDisplay();
 		void setupGrass();
+		void setupPokimacs();
 };

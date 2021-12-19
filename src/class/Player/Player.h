@@ -28,6 +28,7 @@ class Player {
     string name;
     int health;
     Map *map;
+    int exp;
     int x;
     int y;
 

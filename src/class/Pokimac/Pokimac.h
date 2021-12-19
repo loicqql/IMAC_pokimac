@@ -7,19 +7,24 @@ class Pokimac {
 
   public:
     Pokimac();
-    Pokimac(int nbHealth);
 
     string getName();
     int getHealth();
     int getDamage();
+    int getExp();
+    int getX();
+    int getY();
 
     void setName(string username);
-    void setHealth(int nbHealth);
     void setDamage(int nbDamage);
+    void setCoords(int coords);
     
 
   private:
     string name;
     int health;
     int damage;
+    int exp;
+    int x;
+    int y;
 };

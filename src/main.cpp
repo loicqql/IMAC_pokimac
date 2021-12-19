@@ -19,7 +19,7 @@ int main() {
   bool exitLoop = false;
 
   while (!exitLoop) {
-    ConsoleUtils::setCursorPos(21, 21);
+    ConsoleUtils::setCursorPos(SIZE_MAP + 1, SIZE_MAP + 1);
     if (ConsoleUtils::kbhit()) { //if a key is pressed
       bool special = false;
 			int c = ConsoleUtils::getChar(&special); // Get character
