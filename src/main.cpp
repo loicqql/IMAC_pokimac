@@ -4,18 +4,21 @@
 #include <cstdio>
 #include <ctime>
 #include <iomanip>
-#include "class/Player/Player.h"
 #include "../libs/consoleUtils.hpp"
+#include "class/Player/Player.h"
 #include "class/Map/Map.h"
+#include "class/Game/Game.h"
 
 using namespace std;
 
 int main() {
-  Map map;
-  Player poki(&map);
+  Player poki;
+  Game game(&poki);
+  
 
   int x = poki.getX();
   int y = poki.getY();
+  
   bool exitLoop = false;
 
   while (!exitLoop) {
@@ -24,10 +27,10 @@ int main() {
       bool special = false;
 			int c = ConsoleUtils::getChar(&special); // Get character
       switch (c) {
-        case 'z': poki.move('N'); break;
-        case 's': poki.move('S'); break;
-        case 'q': poki.move('W'); break;
-        case 'd': poki.move('E'); break;
+        case 'z': game.movePlayer('N'); break;
+        case 's': game.movePlayer('S'); break;
+        case 'q': game.movePlayer('W'); break;
+        case 'd': game.movePlayer('E'); break;
         case ' ': exitLoop = true; break;
         default: break;
       }

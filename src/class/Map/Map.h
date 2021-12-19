@@ -6,11 +6,13 @@
 #define VOID 0
 #define GRASS 1
 #define POKIMAC 3
+#define HIDDEN_POKIMAC 4
 
 #define DISPLAY_VOID '.'
 #define DISPLAY_GRASS '#'
 #define DISPLAY_PLAYER '@'
 #define DISPLAY_POKIMAC 'P'
+#define DISPLAY_HIDDEN_POKIMAC '#'
 
 
 using namespace std;

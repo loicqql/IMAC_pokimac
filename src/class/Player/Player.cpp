@@ -1,13 +1,12 @@
 #include <string>
 #include "../Player/Player.h"
 #include "../Pokimac/Pokimac.h"
-#include "../Map/Map.h"
 #include "../../../libs/consoleUtils.hpp"
+#include "../Map/Map.h"
 
 using namespace std;
 
-Player::Player(Map *p_map) {
-  map = p_map;
+Player::Player() {
   health = 100;
   x = 0;
   y = 0;
@@ -59,7 +58,6 @@ void Player::attack(Pokimac &pokimac) {
 // Map
 
 void Player::move(char dir) {
-  clearCursor();
   switch (dir) {
   case 'N':
     if(y > 0) {
@@ -85,13 +83,4 @@ void Player::move(char dir) {
   default:
     break;
   }
-  setCursor();
-}
-
-void Player::clearCursor() {
-  ConsoleUtils::setCursorPos(x, y); std::cout << map->getDisplayByCoords(x, y);
-}
-
-void Player::setCursor() {
-  ConsoleUtils::setCursorPos(x, y); std::cout << DISPLAY_PLAYER;
 }

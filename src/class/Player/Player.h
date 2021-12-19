@@ -2,7 +2,6 @@
 #include <string>
 #include "../Pokimac/Pokimac.h"
 #include "../Player/Player.h"
-#include "../Map/Map.h"
 #include "../../../libs/consoleUtils.hpp"
 
 using namespace std;
@@ -10,7 +9,7 @@ using namespace std;
 class Player {
 
   public:
-    Player(Map *p_map);
+    Player();
 
     string getName();
     int getHealth();
@@ -27,7 +26,6 @@ class Player {
   private:
     string name;
     int health;
-    Map *map;
     int exp;
     int x;
     int y;
