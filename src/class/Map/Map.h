@@ -22,7 +22,7 @@ class Map {
 		Map();
 
 		char getDisplayByCoords(int x, int y);
-		int getValueCellByCoords(int x, int y);
+		int getValueByCoords(int x, int y);
 
 	private:
 		int width = SIZE_MAP;

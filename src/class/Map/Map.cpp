@@ -28,7 +28,7 @@ void Map::initDisplay() {
   }
 }
 
-int Map::getValueCellByCoords(int x, int y) {
+int Map::getValueByCoords(int x, int y) {
   return tab[y * SIZE_MAP + x].getValue();
 }
 

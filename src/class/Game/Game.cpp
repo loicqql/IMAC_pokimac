@@ -20,7 +20,7 @@ void Game::movePlayer(char dir) {
   ConsoleUtils::setCursorPos(x, y); std::cout << DISPLAY_PLAYER;
 
   //EVENTS
-  switch (map.getValueCellByCoords(x, y)) {
+  switch (map.getValueByCoords(x, y)) {
   case POKIMAC:
     initPlayerAttack();
     break;
