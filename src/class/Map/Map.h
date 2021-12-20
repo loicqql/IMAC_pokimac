@@ -21,8 +21,11 @@ class Map {
 	public:
 		Map();
 
+		void displayMap();
+
 		char getDisplayByCoords(int x, int y);
 		int getValueByCoords(int x, int y);
+		
 
 	private:
 		int width = SIZE_MAP;
@@ -30,7 +33,6 @@ class Map {
 		Cell tab[SIZE_MAP*SIZE_MAP];
 		int const tab_size = SIZE_MAP*SIZE_MAP;
 
-		void initDisplay();
 		void setupGrass();
 		void setupPokimacs();
 };

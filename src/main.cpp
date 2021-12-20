@@ -32,7 +32,7 @@ int main() {
         case 'q': game.movePlayer('W'); break;
         case 'd': game.movePlayer('E'); break;
         case ' ': exitLoop = true; break;
-        default: break;
+        default: game.makeChoice(c); break;
       }
     }
   }

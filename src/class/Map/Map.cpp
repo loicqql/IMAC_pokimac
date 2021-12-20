@@ -9,18 +9,16 @@ using namespace std;
 
 Map::Map() {
 
-  ConsoleUtils::clear();
-
-  
   //ne pas changer l'ordre
   setupPokimacs();
   setupGrass();
 
-  initDisplay();
+  displayMap();
   
 }
 
-void Map::initDisplay() {
+void Map::displayMap() {
+  ConsoleUtils::clear();
   for (int i = 0; i < SIZE_MAP; i++) {
     for (int j = 0; j < SIZE_MAP; j++) {
       ConsoleUtils::setCursorPos(i,j); std::cout << getDisplayByCoords(i, j);
