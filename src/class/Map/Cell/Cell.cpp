@@ -15,10 +15,10 @@ void Cell::setValue(int new_value) {
   value = new_value;
 }
 
-void Cell::setPokimac(Pokimac *p_pokimac) {
-  poki = p_pokimac;
+void Cell::setPokimac(int index) {
+  indexPoki = index;
 }
 
-Pokimac * Cell::getPokimac() {
-  return poki;
+int Cell::getPokimac() {
+  return indexPoki;
 }

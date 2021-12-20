@@ -14,6 +14,8 @@
 #define DISPLAY_POKIMAC 'P'
 #define DISPLAY_HIDDEN_POKIMAC '#'
 
+#define NB_POKIS 10
+
 
 using namespace std;
 
@@ -31,8 +33,8 @@ class Map {
 	private:
 		int width = SIZE_MAP;
 		int height = SIZE_MAP;
+		Pokimac pokis[NB_POKIS];
 		Cell tab[SIZE_MAP*SIZE_MAP];
-		int const tab_size = SIZE_MAP*SIZE_MAP;
 
 		void setupGrass();
 		void setupPokimacs();

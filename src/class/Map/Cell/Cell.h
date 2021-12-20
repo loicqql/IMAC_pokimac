@@ -8,10 +8,10 @@ class Cell {
 
 		int getValue();
     void setValue(int new_value);
-    void setPokimac(Pokimac *p_pokimac);
-    Pokimac * getPokimac();
+    void setPokimac(int index);
+    int getPokimac();
 
 	private:
     int value;
-		Pokimac *poki;
+		int indexPoki;
 };

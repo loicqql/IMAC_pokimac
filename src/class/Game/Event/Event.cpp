@@ -11,7 +11,7 @@ void Event::playerAttackPokimac(Player *p_player, Pokimac *p_pokimac) {
   initEvent();
   cout << "Tu as rencontré un pokimac !" << endl;
   cout << "Que souhaites-tu faire ?";
-  // cout << endl << p_pokimac->getDamage();
+  cout << endl << p_pokimac->getDamage();
   ConsoleUtils::setCursorPos(0, 3);
   cout << "w: Attaquer" << endl;
   cout << "x: Fuir";

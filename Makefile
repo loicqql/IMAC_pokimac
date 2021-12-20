@@ -1,5 +1,6 @@
 CC=g++
 CFLAGS=-Wall -ansi
+CFLAGSDEBUG=-DDEBUG -g
 
 pokimac: build/game.o build/event.o build/main.o build/map.o build/player.o build/pokimac.o build/cell.o 
 	$(CC) -o $@ $^

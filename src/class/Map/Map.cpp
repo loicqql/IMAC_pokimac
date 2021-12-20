@@ -31,7 +31,8 @@ int Map::getValueByCoords(int x, int y) {
 }
 
 Pokimac * Map::getPokimacByCoords(int x, int y) {
-  return tab[y * SIZE_MAP + x].getPokimac();
+  int index = tab[y * SIZE_MAP + x].getPokimac();
+  return &pokis[index];
 }
 
 char Map::getDisplayByCoords(int x, int y) {
@@ -58,22 +59,16 @@ char Map::getDisplayByCoords(int x, int y) {
 }
 
 void Map::setupPokimacs() {
-  srand((unsigned)time(0)); // pour génération dans le constructeur des pokimac
-  int size = 10;
-  Pokimac pokis[size];
+  srand((unsigned)time(0)); // pour génération dans le constructeur des pokimac  
   int coordsDuPoki;
-  pokis[0].setCoords(1);
-  pokis[0].setDamage(99);
-  tab[1].setValue(POKIMAC);
-  tab[coordsDuPoki].setPokimac(&pokis[0]);
-  for (int i = 1; i < size; i++) {
+  for (int i = 0; i < NB_POKIS; i++) {
     do {
       coordsDuPoki = ((rand()%(SIZE_MAP*SIZE_MAP))+1); // entre 0 et 400
     } while(tab[coordsDuPoki].getValue() == POKIMAC);
 
     pokis[i].setCoords(coordsDuPoki);
     tab[coordsDuPoki].setValue(POKIMAC);
-    tab[coordsDuPoki].setPokimac(&pokis[i]);
+    tab[coordsDuPoki].setPokimac(i);
   }
 
 }
