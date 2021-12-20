@@ -19,6 +19,6 @@ void Cell::setPokimac(Pokimac *p_pokimac) {
   poki = p_pokimac;
 }
 
-Pokimac Cell::getPokimac() {
-  return *poki;
+Pokimac * Cell::getPokimac() {
+  return poki;
 }

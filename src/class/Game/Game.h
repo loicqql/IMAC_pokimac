@@ -2,11 +2,11 @@
 
 #include "../Map/Map.h"
 #include "../Player/Player.h"
+#include "../Pokimac/Pokimac.h"
 #include "./Event/Event.h"
 
 #define MAP_DISPLAYED 0
-#define PLAYER_ATTACK_POKIMAC 1
-#define POKIMAC_ATTACK_PLAYER 2
+#define FIGHT 1
 
 using namespace std;
 
@@ -20,9 +20,9 @@ private:
   Map map;
   Event event;
   Player *player;
+  Pokimac *pokimac;
   int game_mode;
 
-  void PlayerAttackPokimac();
-  void PokimacAttackPlayer();
+  void combat(bool isAttack);
   void displayMap();
 };

@@ -25,6 +25,7 @@ class Map {
 
 		char getDisplayByCoords(int x, int y);
 		int getValueByCoords(int x, int y);
+		Pokimac * getPokimacByCoords(int x, int y);
 		
 
 	private:

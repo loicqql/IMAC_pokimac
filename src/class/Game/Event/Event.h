@@ -4,6 +4,8 @@
 #include <vector>
 
 #include "../../../../libs/consoleUtils.hpp"
+#include "../../Player/Player.h"
+#include "../../Pokimac/Pokimac.h"
 
 using namespace std;
 
@@ -13,10 +15,10 @@ public:
   void addLog(string text);
   void clearLogs();
 
-  void playerAttackPokimac();
-  void PokimacAttackPlayer();
+  void playerAttackPokimac(Player *p_player, Pokimac *p_pokimac);
 
 private:
   void initEvent();
-  std::vector< string > logs;
+  void displayLogs();
+  std::vector<string> logs;
 };

@@ -9,7 +9,7 @@ class Cell {
 		int getValue();
     void setValue(int new_value);
     void setPokimac(Pokimac *p_pokimac);
-    Pokimac getPokimac();
+    Pokimac * getPokimac();
 
 	private:
     int value;

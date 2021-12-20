@@ -27,12 +27,13 @@ void Game::movePlayer(char dir) {
   //EVENTS
   switch (map.getValueByCoords(x, y)) {
   case POKIMAC:
-    game_mode = PLAYER_ATTACK_POKIMAC;
-    event.playerAttackPokimac();
+    game_mode = FIGHT;
+    pokimac = map.getPokimacByCoords(x, y);
+    event.playerAttackPokimac(player, pokimac);
     break;
   case HIDDEN_POKIMAC:
-    game_mode = PLAYER_ATTACK_POKIMAC;
-    event.playerAttackPokimac();
+    game_mode = FIGHT;
+    event.playerAttackPokimac(player, pokimac);
     break;
   
   default:
@@ -43,24 +44,13 @@ void Game::movePlayer(char dir) {
 
 void Game::makeChoice(char choice) {
   if(game_mode != MAP_DISPLAYED) {
-    if(game_mode == PLAYER_ATTACK_POKIMAC) {
+    if(game_mode == FIGHT) {
       switch (choice) {
       case 'w':
-        PlayerAttackPokimac();
+        combat(true);
         break;
       case 'x':
-        displayMap();
-        break;
-      default: break;
-      }
-    }
-    if(game_mode == POKIMAC_ATTACK_PLAYER) {
-      switch (choice) {
-      case 'w':
-        PlayerAttackPokimac();
-        break;
-      case 'x':
-        displayMap();
+        combat(false);
         break;
       default: break;
       }
@@ -68,19 +58,21 @@ void Game::makeChoice(char choice) {
   }
 }
 
-void Game::PlayerAttackPokimac() {
-  event.addLog("Tu as choisi d'attaquer Robibi");
-
-  // interaction avec le pokimac
-  // verif si le pokimac a toujours de la vie
-  game_mode = POKIMAC_ATTACK_PLAYER;
-  event.addLog("Tu as perdu 12 pt de vie");
-  event.PokimacAttackPlayer();
-  // sinon -> ecran de win
+void Game::combat(bool isAttack) {
+  if(isAttack) {
+    // interaction avec le pokimac
+    // verif si le pokimac a toujours de la vie
+    event.addLog("Tu as perdu 12 pt de vie");
+    event.playerAttackPokimac(player, pokimac);
+    // sinon -> ecran de win
+    
+  }else {
+    game_mode = MAP_DISPLAYED;
+    displayMap();
+  }
 }
 
 void Game::displayMap() {
-  game_mode = PLAYER_ATTACK_POKIMAC;
   map.displayMap();
   event.clearLogs();
 }
