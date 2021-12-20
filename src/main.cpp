@@ -12,12 +12,12 @@
 using namespace std;
 
 int main() {
-  Player poki;
-  Game game(&poki);
+  Player player;
+  Game game(&player);
   
 
-  int x = poki.getX();
-  int y = poki.getY();
+  int x = player.getX();
+  int y = player.getY();
   
   bool exitLoop = false;
 
