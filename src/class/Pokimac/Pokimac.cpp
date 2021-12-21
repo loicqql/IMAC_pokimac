@@ -10,7 +10,7 @@ using namespace std;
 Pokimac::Pokimac() {
   health = ((rand()%10)+1)*10;
   damage = ((rand()%10)+1)*10;
-  exp = ((rand()%6)+5);
+  exp = ((rand()%6)+5)*10;
   name = "Poki";
 }
 
@@ -45,20 +45,22 @@ int Pokimac::getHealth() {
   return health;
 }
 
+void Pokimac::setHealth(int nbDamage) {
+  health = health - nbDamage;
+}
+
 // Damage
 
 int Pokimac::getDamage() {
   return damage;
 }
 
+void Pokimac::addDamage(int nbDamage) {
+  damage = damage + nbDamage;
+}
+
 // Exp
 
 int Pokimac::getExp() {
   return exp;
-}
-
-//est attaqué
-
-void Pokimac::setDamage(int nbDamage) {
-  health = health - nbDamage;
 }

@@ -10,13 +10,14 @@ class Pokimac {
 
     string getName();
     int getHealth();
+    void setHealth(int nbDamage);
     int getDamage();
     int getExp();
     int getX();
     int getY();
 
     void setName(string username);
-    void setDamage(int nbDamage);
+    void addDamage(int nbDamage);
     void setCoords(int coords);
     
 

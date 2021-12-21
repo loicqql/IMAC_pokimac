@@ -61,9 +61,29 @@ void Game::makeChoice(char choice) {
 void Game::combat(bool isAttack) {
   if(isAttack) {
     // interaction avec le pokimac
-    // verif si le pokimac a toujours de la vie
-    event.addLog("Tu as perdu 12 pt de vie");
-    event.playerAttackPokimac(player, pokimac);
+    // if player vie < 0
+
+    srand((unsigned)time(0)); //pour random dans player et pokimac
+    int damage = player->attack(pokimac);
+    if(pokimac->getHealth() > 0) {
+      // player attack pokimac
+      event.addLog(damage == 0 ? "Tu n'as pas réussi à faire de dégâts" : "Tu as réussi à faire " + to_string(damage) + " points de dégâts à " + pokimac->getName());
+
+      // pokimac attack player
+      int nb = ((rand()%10)+1)*10;
+      if(pokimac->getExp() >= nb) {
+        event.addLog(pokimac->getName() + " n'a pas réussi à te faire de dégâts");
+      }else {
+        player->setHealth(pokimac->getDamage());
+        event.addLog(pokimac->getName() + " t'a infligé " + to_string(pokimac->getDamage()) + " points de dégâts");
+      }
+      
+      // reset display
+      event.playerAttackPokimac(player, pokimac);
+    }else {
+      //Ecran de win
+    }
+    
     // sinon -> ecran de win
     
   }else {

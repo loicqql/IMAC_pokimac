@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include "../Pokimac/Pokimac.h"
-#include "../Player/Player.h"
+#include "../Map/Map.h"
 #include "../../../libs/consoleUtils.hpp"
 
 using namespace std;
@@ -17,15 +17,23 @@ class Player {
     int getY();
 
     void setName(string username);
-    void setHealth(int nbHealth);
-    void setDamage(int nbDamage);
+    void addHealth(int nbHealth);
+    
+    void setHealth(int nbDamage);
 
-    void attack(Pokimac &pokimac);
+    int getDamage();
+    void addDamage(int nbDamage);
+
+    int getExp();
+    void addExp(int nbExp);
+
+    int attack(Pokimac *p_pokimac);
     void move(char dir);
     
   private:
     string name;
     int health;
+    int damage;
     int exp;
     int x;
     int y;

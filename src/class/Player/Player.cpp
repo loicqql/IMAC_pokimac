@@ -1,8 +1,6 @@
 #include <string>
-#include "../Player/Player.h"
-#include "../Pokimac/Pokimac.h"
+#include "Player.h"
 #include "../../../libs/consoleUtils.hpp"
-#include "../Map/Map.h"
 
 using namespace std;
 
@@ -10,7 +8,8 @@ Player::Player() {
   health = 100;
   x = 0;
   y = 0;
-  exp = 5;
+  exp = 50;
+  damage = 30;
 }
 
 // Name
@@ -39,20 +38,44 @@ int Player::getHealth() {
   return health;
 }
 
-void Player::setHealth(int nbHealth) {
+void Player::addHealth(int nbHealth) {
   health = health + nbHealth;
+}
+
+void Player::setHealth(int nbDamage) {
+  health = health - nbDamage;
 }
 
 // Damage
 
-void Player::setDamage(int nbDamage) {
-  health = health - nbDamage;
+int Player::getDamage() {
+  return damage;
+}
+
+void Player::addDamage(int nbDamage) {
+  damage = damage + nbDamage;
+}
+
+// Exp
+
+int Player::getExp() {
+  return exp;
+}
+
+void Player::addExp(int nbExp) {
+  exp = exp + nbExp;
 }
 
 // Attack
 
-void Player::attack(Pokimac &pokimac) {
-  pokimac.setDamage(30);
+int Player::attack(Pokimac *p_pokimac) {
+  int nb = ((rand()%10)+1)*10;
+  if(exp >= nb) {
+    p_pokimac->setHealth(damage);
+    return damage;
+  }else {
+    return 0;
+  }
 }
 
 // Map
