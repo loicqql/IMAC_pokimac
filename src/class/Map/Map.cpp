@@ -45,10 +45,18 @@ char Map::getDisplayByCoords(int x, int y) {
     charDisplay = DISPLAY_GRASS;
     break;
   case HIDDEN_POKIMAC:
-    charDisplay = DISPLAY_HIDDEN_POKIMAC;
+    if(getPokimacByCoords(x, y)->isDefeated()) {
+      charDisplay = DISPLAY_GRASS;
+    }else {
+      charDisplay = DISPLAY_HIDDEN_POKIMAC;
+    }
     break;
   case POKIMAC:
-    charDisplay = DISPLAY_POKIMAC;
+  if(getPokimacByCoords(x, y)->isDefeated()) {
+      charDisplay = DISPLAY_VOID;
+    }else {
+      charDisplay = DISPLAY_POKIMAC;
+    }
     break;
   default:
     charDisplay = DISPLAY_VOID;

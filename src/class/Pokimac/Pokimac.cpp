@@ -12,6 +12,7 @@ Pokimac::Pokimac() {
   damage = ((rand()%10)+1)*10;
   exp = ((rand()%6)+5)*10;
   name = "Poki";
+  defeated = false;
 }
 
 // Name
@@ -63,4 +64,14 @@ void Pokimac::addDamage(int nbDamage) {
 
 int Pokimac::getExp() {
   return exp;
+}
+
+// Defeated
+
+bool Pokimac::isDefeated() {
+  return defeated;
+}
+
+void Pokimac::setDefeated(bool isDefeated) {
+  defeated = isDefeated;
 }

@@ -16,6 +16,8 @@ public:
   void clearLogs();
 
   void playerAttackPokimac(Player *p_player, Pokimac *p_pokimac);
+  void pokimacDefeated(Pokimac *p_pokimac);
+  void playerDefeated();
 
 private:
   void initEvent();

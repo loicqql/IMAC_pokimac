@@ -11,6 +11,8 @@ class Pokimac {
     string getName();
     int getHealth();
     void setHealth(int nbDamage);
+    bool isDefeated();
+    void setDefeated(bool isDefeated);
     int getDamage();
     int getExp();
     int getX();
@@ -28,4 +30,5 @@ class Pokimac {
     int exp;
     int x;
     int y;
+    bool defeated;
 };

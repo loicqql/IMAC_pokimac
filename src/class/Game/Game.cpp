@@ -27,13 +27,18 @@ void Game::movePlayer(char dir) {
   //EVENTS
   switch (map.getValueByCoords(x, y)) {
   case POKIMAC:
-    game_mode = FIGHT;
     pokimac = map.getPokimacByCoords(x, y);
-    event.playerAttackPokimac(player, pokimac);
+    if(!pokimac->isDefeated()) {
+      game_mode = FIGHT;
+      event.playerAttackPokimac(player, pokimac);
+    }
     break;
   case HIDDEN_POKIMAC:
-    game_mode = FIGHT;
-    event.playerAttackPokimac(player, pokimac);
+    pokimac = map.getPokimacByCoords(x, y);
+    if(!pokimac->isDefeated()) {
+      game_mode = FIGHT;
+      event.playerAttackPokimac(player, pokimac);
+    }
     break;
   
   default:
@@ -55,15 +60,22 @@ void Game::makeChoice(char choice) {
       default: break;
       }
     }
+    if(game_mode == POKIMAC_DEFEATED) {
+      switch (choice) {
+      case 'a':
+        game_mode = MAP_DISPLAYED;
+        displayMap();
+        break;
+      default: break;
+      }
+    }
   }
 }
 
 void Game::combat(bool isAttack) {
   if(isAttack) {
-    // interaction avec le pokimac
-    // if player vie < 0
 
-    srand((unsigned)time(0)); //pour random dans player et pokimac
+    srand((unsigned)time(0)); //pour random dans player
     int damage = player->attack(pokimac);
     if(pokimac->getHealth() > 0) {
       // player attack pokimac
@@ -77,14 +89,21 @@ void Game::combat(bool isAttack) {
         player->setHealth(pokimac->getDamage());
         event.addLog(pokimac->getName() + " t'a infligé " + to_string(pokimac->getDamage()) + " points de dégâts");
       }
+
+      if(player->getHealth() <= 0) {
+        game_mode = PLAYER_DEFEATED;
+        event.playerDefeated();
+      }else {
+        // reset display
+        event.playerAttackPokimac(player, pokimac);
+      }
       
-      // reset display
-      event.playerAttackPokimac(player, pokimac);
+      
     }else {
-      //Ecran de win
+      game_mode = POKIMAC_DEFEATED;
+      pokimac->setDefeated(true);
+      event.pokimacDefeated(pokimac);
     }
-    
-    // sinon -> ecran de win
     
   }else {
     game_mode = MAP_DISPLAYED;

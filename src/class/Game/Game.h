@@ -7,6 +7,8 @@
 
 #define MAP_DISPLAYED 0
 #define FIGHT 1
+#define POKIMAC_DEFEATED 2
+#define PLAYER_DEFEATED 3
 
 using namespace std;
 

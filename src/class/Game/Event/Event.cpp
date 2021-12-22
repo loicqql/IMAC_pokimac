@@ -34,6 +34,19 @@ void Event::playerAttackPokimac(Player *p_player, Pokimac *p_pokimac) {
     
 }
 
+void Event::pokimacDefeated(Pokimac *p_pokimac) {
+  initEvent();
+  cout << "Tu as vaincu " + p_pokimac->getName() << endl;
+  cout << endl << "a: Continuer" << endl;
+}
+
+void Event::playerDefeated() {
+  initEvent();
+  cout << "GAME OVER" << endl;
+  cout << "Tu n'as plus de vie" << endl;
+  cout << endl << "espace: quitter" << endl;
+}
+
 void Event::addLog(string text) {
   logs.push_back(text);
   displayLogs();
