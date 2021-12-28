@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "../Player/Inventory/Inventory.h"
 using namespace std;
 
 Game::Game(Player *p_player) {
@@ -57,6 +58,8 @@ void Game::makeChoice(char choice) {
       case 'x':
         combat(false);
         break;
+      case 'c':
+        openInventory(true);
       default: break;
       }
     }
@@ -114,4 +117,11 @@ void Game::combat(bool isAttack) {
 void Game::displayMap() {
   map.displayMap();
   event.clearLogs();
+}
+
+void Game::openInventory(bool isOpen){
+  ConsoleUtils::clear();
+  ConsoleUtils::setCursorPos(0, 0);
+  Game::player->getInventory().displayInventory();
+  event.playerAttackPokimac(player, pokimac);
 }

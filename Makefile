@@ -2,7 +2,7 @@ CC=g++
 CFLAGS=-Wall -ansi
 CFLAGSDEBUG=-DDEBUG -g
 
-pokimac: build/game.o build/event.o build/main.o build/map.o build/player.o build/pokimac.o build/cell.o 
+pokimac: build/game.o build/event.o build/main.o build/map.o build/player.o build/pokimac.o build/cell.o build/inventory.o
 	$(CC) -o $@ $^
 
 build/main.o: src/main.cpp
@@ -24,6 +24,9 @@ build/cell.o: src/class/Map/Cell/Cell.cpp src/class/Map/Cell/Cell.h
 	$(CC) -o $@ -c $<
 
 build/event.o: src/class/Game/Event/Event.cpp src/class/Game/Event/Event.h
+	$(CC) -o $@ -c $<
+
+build/inventory.o: src/class/Player/Inventory/Inventory.cpp src/class/Player/Inventory/Inventory.h
 	$(CC) -o $@ -c $<
 
 clean: 

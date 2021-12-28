@@ -17,6 +17,7 @@ public:
   Game(Player *p_player);
   void movePlayer(char dir);
   void makeChoice(char choice);
+  void openInventory(bool isOpen);
 
 private:
   Map map;

@@ -1,30 +1,39 @@
-#include <string>
 #include "Inventory.h"
+#include "../../Game/Game.h"
+#include "../Player/Player.h"
 #include "../../../../libs/consoleUtils.hpp"
 
 Inventory::Inventory(){
-    int items[SIZE_INVENTORY]={1,1,0,0,0,0,0,0,0,0};
+    pokiball = 2;
+    potion = 0;
+}
+
+int Inventory::getNbPotion(){
+    return potion;
+}
+
+int Inventory::getNbPokiball(){
+    return pokiball;
 }
 
 void Inventory::displayInventory(){
-    char charDisplay;
-    for(int i=0;i<SIZE_INVENTORY;i++){
-        cout << " | " << getDisplayByCoords(i) << " | ";
-    }
+    cout << endl << "Items disponibles : " << endl;
+    cout << "Pokiballs : " << pokiball << endl;
+    cout << "Potions : " << potion << endl;
 }
 
-char Inventory::getDisplayByCoords(int i){
-    char charDisplay;
-    switch (items[i]){
-        case 1:
-            charDisplay = DISPLAY_POTION;
-            break;
-        case 2:
-            charDisplay = DISPLAY_POKIBALL;
-            break;
-        default:
-            charDisplay = DISPLAY_VOID;
-            break;
-    }
+void Inventory::rmPotion(){
+    potion--;
+}
 
+void Inventory::rmPokiball(){
+    pokiball--;
+}
+
+void Inventory::addPotion(){
+    potion++;
+}
+
+void Inventory::addPokiball(){
+    pokiball++;
 }

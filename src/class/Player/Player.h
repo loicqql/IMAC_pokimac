@@ -3,6 +3,7 @@
 #include "../Pokimac/Pokimac.h"
 #include "../Map/Map.h"
 #include "../../../libs/consoleUtils.hpp"
+#include "Inventory/Inventory.h"
 
 using namespace std;
 
@@ -29,6 +30,8 @@ class Player {
 
     int attack(Pokimac *p_pokimac);
     void move(char dir);
+
+    Inventory getInventory();
     
   private:
     string name;
@@ -37,6 +40,7 @@ class Player {
     int exp;
     int x;
     int y;
+    Inventory inventory;
 
     void clearCursor();
     void setCursor();

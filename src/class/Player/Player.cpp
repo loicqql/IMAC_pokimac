@@ -107,3 +107,7 @@ void Player::move(char dir) {
     break;
   }
 }
+
+Inventory Player::getInventory(){
+  return inventory;
+}

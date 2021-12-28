@@ -18,7 +18,8 @@ void Event::playerAttackPokimac(Player *p_player, Pokimac *p_pokimac) {
   cout << "Expérience : " <<  p_player->getExp() << "%" << endl;
 
   cout << endl << "w: Attaquer" << endl;
-  cout << "x: Fuir";
+  cout << "x: Fuir" << endl;
+  cout << "c : Inventaire";
 
   int transX = 40;
   ConsoleUtils::setCursorPos(transX, 3);
