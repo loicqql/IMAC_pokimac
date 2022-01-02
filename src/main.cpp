@@ -8,12 +8,15 @@
 #include "class/Player/Player.h"
 #include "class/Map/Map.h"
 #include "class/Game/Game.h"
+#include "class/Player/Inventory/Inventory.h"
 
 using namespace std;
 
 int main() {
-  Player player;
+  Inventory inventory;
+  Player player(&inventory);
   Game game(&player);
+  
   
 
   int x = player.getX();

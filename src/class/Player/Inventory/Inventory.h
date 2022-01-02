@@ -10,15 +10,11 @@ class Inventory {
     public :
         Inventory();
 
-        int getNbPotion();
-        int getNbPokiball();
+        //pour int item > potion = 0 / pokiball = 1
+        int getNbItem(int item);
         void displayInventory();
-        void rmPotion();
-        void rmPokiball();
-        void addPotion();
-        void addPokiball();
-        
-        //void displayInventory();
+        void rmItem(int item);
+        void addItem(int item);
 
     private :
         //int size = SIZE_INVENTORY;

@@ -59,7 +59,12 @@ void Game::makeChoice(char choice) {
         combat(false);
         break;
       case 'c':
-        openInventory(true);
+        if(Game::player->inventory->getNbItem(0)==0 && Game::player->inventory->getNbItem(1)==0){
+          cout << "Inventaire vide !" << endl;
+        }else{
+          openInventory(true);
+        }
+        break;
       default: break;
       }
     }
@@ -122,6 +127,34 @@ void Game::displayMap() {
 void Game::openInventory(bool isOpen){
   ConsoleUtils::clear();
   ConsoleUtils::setCursorPos(0, 0);
-  Game::player->getInventory().displayInventory();
+  Game::player->inventory->displayInventory();
+  //choix objet inventaire
+  bool exitLoop = false;
+  while (!exitLoop) {
+      if (ConsoleUtils::kbhit()) { //if a key is pressed
+      bool special = false;
+      int c = ConsoleUtils::getChar(&special); // Get character
+        switch (c) {
+            case 'x': //potion (soigne de 20)
+                if(Game::player->inventory->getNbItem(0) > 0){
+                    Game::player->inventory->rmItem(0);
+                    Game::player->addHealth(20);
+                    exitLoop=true;
+                }else{
+                    cout << "Impossible, plus de potion de soin !"<<endl;
+                }
+                break;
+            case 'c': //pokiball
+                if(Game::player->inventory->getNbItem(1) > 0){
+                    Game::player->inventory->rmItem(1);
+                    //ajouter fonction capturer pokimac
+                    exitLoop=true;
+                }else{
+                    cout << "Impossible, plus de pokiball !"<<endl;
+                }
+                break;
+        }
+      } 
+  }
   event.playerAttackPokimac(player, pokimac);
 }

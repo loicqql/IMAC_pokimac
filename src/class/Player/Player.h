@@ -1,3 +1,4 @@
+
 #pragma once
 #include <string>
 #include "../Pokimac/Pokimac.h"
@@ -10,7 +11,7 @@ using namespace std;
 class Player {
 
   public:
-    Player();
+    Player(Inventory *p_inventory);
 
     string getName();
     int getHealth();
@@ -31,8 +32,9 @@ class Player {
     int attack(Pokimac *p_pokimac);
     void move(char dir);
 
-    Inventory getInventory();
-    
+    Inventory *inventory;
+//Inventory getInventory();
+
   private:
     string name;
     int health;
@@ -40,7 +42,6 @@ class Player {
     int exp;
     int x;
     int y;
-    Inventory inventory;
 
     void clearCursor();
     void setCursor();

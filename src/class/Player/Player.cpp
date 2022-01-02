@@ -4,12 +4,13 @@
 
 using namespace std;
 
-Player::Player() {
+Player::Player(Inventory *p_inventory) {
   health = 100;
   x = 0;
   y = 0;
   exp = 50;
   damage = 30;
+  inventory = p_inventory;
 }
 
 // Name
@@ -108,6 +109,6 @@ void Player::move(char dir) {
   }
 }
 
-Inventory Player::getInventory(){
-  return inventory;
-}
+// Inventory Player::getInventory(){
+//   return inventory;
+// }
