@@ -29,6 +29,6 @@ class Inventory {
         //vector<Item> items[SIZE_INVENTORY];
         int potion;
         int pokiball;
-        Pokimac *team;
+        Pokimac * team[TEAM_CAPACITY];
         int team_size;
 };

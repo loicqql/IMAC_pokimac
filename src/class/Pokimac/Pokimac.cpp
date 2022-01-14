@@ -98,9 +98,3 @@ void Pokimac::setStarter(){
   health = 100;
   damage = 30;
 }
-
-//Capture
-
-void Pokimac::capture(){
-  
-}

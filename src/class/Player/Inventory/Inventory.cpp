@@ -7,7 +7,6 @@
 Inventory::Inventory(){
     potion = 1;
     pokiball = 2;
-    Pokimac *team[TEAM_CAPACITY];
     team[0]= new Pokimac;
     team[0]->setStarter();
     team_size=1;
@@ -48,12 +47,12 @@ void Inventory::addItem(int item){
 }
 
 Pokimac * Inventory::getTeam(){
-    return team;
+    return *team;
 }
 
 void Inventory::capturePoki(Pokimac * poki){
     if(team_size < TEAM_CAPACITY){
-        team[team_size]=*poki;
+        team[team_size]= poki;
         team_size++;
     }else{
         cout << "Plus de place dans l'équipe !"<<endl;
