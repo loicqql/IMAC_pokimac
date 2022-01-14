@@ -84,7 +84,7 @@ void Game::combat(bool isAttack) {
   if(isAttack) {
 
     srand((unsigned)time(0)); //pour random dans player
-    int damage = player->attack(pokimac);
+    int damage = player->inventory->getTeam()[0].attack(pokimac);
     if(pokimac->getHealth() > 0) {
       // player attack pokimac
       event.addLog(damage == 0 ? "Tu n'as pas réussi à faire de dégâts" : "Tu as réussi à faire " + to_string(damage) + " points de dégâts à " + pokimac->getName());
@@ -94,11 +94,11 @@ void Game::combat(bool isAttack) {
       if(pokimac->getExp() >= nb) {
         event.addLog(pokimac->getName() + " n'a pas réussi à te faire de dégâts");
       }else {
-        player->setHealth(pokimac->getDamage());
+        player->inventory->getTeam()[0].setHealth(pokimac->getDamage());
         event.addLog(pokimac->getName() + " t'a infligé " + to_string(pokimac->getDamage()) + " points de dégâts");
       }
 
-      if(player->getHealth() <= 0) {
+      if(player->inventory->getTeam()[0].getHealth() <= 0) {
         game_mode = PLAYER_DEFEATED;
         event.playerDefeated();
       }else {
@@ -138,7 +138,7 @@ void Game::openInventory(bool isOpen){
             case 'x': //potion (soigne de 20)
                 if(Game::player->inventory->getNbItem(0) > 0){
                     Game::player->inventory->rmItem(0);
-                    Game::player->addHealth(20);
+                    player->inventory->getTeam()[0].addHealth(20);
                     exitLoop=true;
                 }else{
                     cout << "Impossible, plus de potion de soin !"<<endl;
@@ -148,6 +148,9 @@ void Game::openInventory(bool isOpen){
                 if(Game::player->inventory->getNbItem(1) > 0){
                     Game::player->inventory->rmItem(1);
                     //ajouter fonction capturer pokimac
+
+
+
                     exitLoop=true;
                 }else{
                     cout << "Impossible, plus de pokiball !"<<endl;

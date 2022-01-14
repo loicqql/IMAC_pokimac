@@ -46,6 +46,10 @@ int Pokimac::getHealth() {
   return health;
 }
 
+void Pokimac::addHealth(int nbHealth) {
+  health = health + nbHealth;
+}
+
 void Pokimac::setHealth(int nbDamage) {
   health = health - nbDamage;
 }
@@ -74,4 +78,29 @@ bool Pokimac::isDefeated() {
 
 void Pokimac::setDefeated(bool isDefeated) {
   defeated = isDefeated;
+}
+
+// Attack
+
+int Pokimac::attack(Pokimac *p_pokimac) {
+  int nb = ((rand()%10)+1)*10;
+  if(exp >= nb) {
+    p_pokimac->setHealth(damage);
+    return damage;
+  }else {
+    return 0;
+  }
+}
+
+// Starter
+
+void Pokimac::setStarter(){
+  health = 100;
+  damage = 30;
+}
+
+//Capture
+
+void Pokimac::capture(){
+  
 }

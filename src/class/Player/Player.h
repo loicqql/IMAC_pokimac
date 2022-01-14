@@ -19,17 +19,10 @@ class Player {
     int getY();
 
     void setName(string username);
-    void addHealth(int nbHealth);
-    
-    void setHealth(int nbDamage);
-
-    int getDamage();
-    void addDamage(int nbDamage);
 
     int getExp();
     void addExp(int nbExp);
 
-    int attack(Pokimac *p_pokimac);
     void move(char dir);
 
     Inventory *inventory;
@@ -37,8 +30,8 @@ class Player {
 
   private:
     string name;
-    int health;
-    int damage;
+    //int health;
+    //int damage;
     int exp;
     int x;
     int y;

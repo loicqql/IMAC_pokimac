@@ -2,10 +2,15 @@
 #include "../../Game/Game.h"
 #include "../Player.h"
 #include "../../../../libs/consoleUtils.hpp"
+#include "../../Pokimac/Pokimac.h"
 
 Inventory::Inventory(){
     potion = 1;
     pokiball = 2;
+    Pokimac *team[TEAM_CAPACITY];
+    team[0]= new Pokimac;
+    team[0]->setStarter();
+    team_size=1;
 }
 
 int Inventory::getNbItem(int item){
@@ -39,5 +44,18 @@ void Inventory::addItem(int item){
         potion++;
     }else if(item == 1){
         pokiball++;
+    }
+}
+
+Pokimac * Inventory::getTeam(){
+    return team;
+}
+
+void Inventory::capturePoki(Pokimac * poki){
+    if(team_size < TEAM_CAPACITY){
+        team[team_size]=*poki;
+        team_size++;
+    }else{
+        cout << "Plus de place dans l'équipe !"<<endl;
     }
 }

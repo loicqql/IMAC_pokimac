@@ -5,11 +5,9 @@
 using namespace std;
 
 Player::Player(Inventory *p_inventory) {
-  health = 100;
   x = 0;
   y = 0;
   exp = 50;
-  damage = 30;
   inventory = p_inventory;
 }
 
@@ -33,30 +31,6 @@ int Player::getY() {
   return y;
 }
 
-// Health
-
-int Player::getHealth() {
-  return health;
-}
-
-void Player::addHealth(int nbHealth) {
-  health = health + nbHealth;
-}
-
-void Player::setHealth(int nbDamage) {
-  health = health - nbDamage;
-}
-
-// Damage
-
-int Player::getDamage() {
-  return damage;
-}
-
-void Player::addDamage(int nbDamage) {
-  damage = damage + nbDamage;
-}
-
 // Exp
 
 int Player::getExp() {
@@ -65,18 +39,6 @@ int Player::getExp() {
 
 void Player::addExp(int nbExp) {
   exp = exp + nbExp;
-}
-
-// Attack
-
-int Player::attack(Pokimac *p_pokimac) {
-  int nb = ((rand()%10)+1)*10;
-  if(exp >= nb) {
-    p_pokimac->setHealth(damage);
-    return damage;
-  }else {
-    return 0;
-  }
 }
 
 // Map
@@ -108,7 +70,3 @@ void Player::move(char dir) {
     break;
   }
 }
-
-// Inventory Player::getInventory(){
-//   return inventory;
-// }
