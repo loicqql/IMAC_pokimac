@@ -30,10 +30,10 @@ void Inventory::displayInventory(){
 
 void Inventory::rmItem(int item){
     if(item == 0){
-        cout << "Vous avez utilisé une potion de soin : +20 pv"<<endl;
+        //cout << "Vous avez utilisé une potion de soin : +20 pv"<<endl;
         potion--;
     }else if(item == 1){
-        cout << "Vous avez utilisé une pokiball"<<endl;
+        //cout << "Vous avez utilisé une pokiball"<<endl;
         pokiball--;
     }
 }
@@ -50,11 +50,19 @@ Pokimac * Inventory::getTeam(){
     return *team;
 }
 
-void Inventory::capturePoki(Pokimac * poki){
+void Inventory::addPoki(Pokimac * poki){
     if(team_size < TEAM_CAPACITY){
         team[team_size]= poki;
         team_size++;
     }else{
         cout << "Plus de place dans l'équipe !"<<endl;
     }
+}
+
+void Inventory::showTeam(){
+    cout << "Cliquez n'importe où pour revenir au combat" << endl;
+    for(int i=0;i< team_size;i++){
+        cout << i+1 << ". " << team[i]->getName() << " : " << team[i]->getHealth() << " pv | " << team[i]->getDamage() << " dmg "<<endl;
+    }
+    
 }

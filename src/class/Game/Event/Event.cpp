@@ -19,7 +19,8 @@ void Event::playerAttackPokimac(Player *p_player, Pokimac *p_pokimac) {
 
   cout << endl << "w: Attaquer" << endl;
   cout << "x: Fuir" << endl;
-  cout << "c : Inventaire";
+  cout << "c: Inventaire" << endl;
+  cout << "v: Équipe";
 
   int transX = 40;
   ConsoleUtils::setCursorPos(transX, 3);
@@ -46,6 +47,12 @@ void Event::playerDefeated() {
   cout << "GAME OVER" << endl;
   cout << "Tu n'as plus de vie" << endl;
   cout << endl << "espace: quitter" << endl;
+}
+
+void Event::pokimacCaught(Pokimac *p_pokimac){
+  initEvent();
+  cout << "Bravo ! " + p_pokimac->getName() + " est capturé !" << endl;
+  cout << endl << "a: Continuer" << endl;  
 }
 
 void Event::addLog(string text) {

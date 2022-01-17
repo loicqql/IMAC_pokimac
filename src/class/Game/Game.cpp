@@ -65,6 +65,8 @@ void Game::makeChoice(char choice) {
           openInventory(true);
         }
         break;
+      case 'v':
+        openTeam(true);
       default: break;
       }
     }
@@ -148,10 +150,9 @@ void Game::openInventory(bool isOpen){
                 if(Game::player->inventory->getNbItem(1) > 0){
                     Game::player->inventory->rmItem(1);
                     //ajouter fonction capturer pokimac
-
-
-
+                    catchPoki(pokimac);
                     exitLoop=true;
+
                 }else{
                     cout << "Impossible, plus de pokiball !"<<endl;
                 }
@@ -159,5 +160,51 @@ void Game::openInventory(bool isOpen){
         }
       } 
   }
-  event.playerAttackPokimac(player, pokimac);
+  if(pokimac->isDefeated()){
+    game_mode = MAP_DISPLAYED;
+    displayMap();
+  }else{
+    event.playerAttackPokimac(player, pokimac);
+  }
+}
+
+void Game::catchPoki(Pokimac *poki){
+  if(poki->getHealth()>50 && (rand()%100 < 50)){ //cas pv poki > 50 : 50% de succès
+    Game::player->inventory->addPoki(poki);
+    game_mode = POKIMAC_DEFEATED;
+    pokimac->setDefeated(true);
+    event.pokimacCaught(poki);
+  }else if((poki->getHealth()<=50) && (poki->getHealth()>20 && (rand()%100 < 75))){ //cas 50 >= pv poki > 20 : 75% de succès
+    Game::player->inventory->addPoki(poki);
+    game_mode = POKIMAC_DEFEATED;
+    pokimac->setDefeated(true);
+    event.pokimacCaught(poki);
+  }else if(poki->getHealth()<=20 && (rand()%100 < 90)){//cas pv poki < 20 : 90% de succès
+    Game::player->inventory->addPoki(poki);
+    game_mode = POKIMAC_DEFEATED;
+    pokimac->setDefeated(true);
+    event.pokimacCaught(poki);
+  }else{
+    event.addLog("Oh-oh, Poki s'est échappé de sa pokiball !");
+    event.playerAttackPokimac(player, pokimac);
+  }
+} 
+
+void Game::openTeam(bool isOpen){
+  ConsoleUtils::clear();
+  ConsoleUtils::setCursorPos(0, 0);
+  Game::player->inventory->showTeam();
+  bool exitLoop=false;
+  while (!exitLoop) {
+    if (ConsoleUtils::kbhit()) { //if a key is pressed
+      bool special = false;
+      int c = ConsoleUtils::getChar(&special); // Get character
+      switch (c) {
+        default:
+          exitLoop = true;
+          event.playerAttackPokimac(player, pokimac);
+          break;
+      }
+    }
+  }
 }

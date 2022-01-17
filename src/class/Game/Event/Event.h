@@ -18,6 +18,7 @@ public:
   void playerAttackPokimac(Player *p_player, Pokimac *p_pokimac);
   void pokimacDefeated(Pokimac *p_pokimac);
   void playerDefeated();
+  void pokimacCaught(Pokimac *p_pokimac);
 
 private:
   void initEvent();

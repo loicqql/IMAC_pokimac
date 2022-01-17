@@ -25,7 +25,6 @@ class Pokimac {
     void setCoords(int coords);
 
     void setStarter();
-    void capture();
     
 
   private:

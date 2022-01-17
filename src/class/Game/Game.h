@@ -18,6 +18,8 @@ public:
   void movePlayer(char dir);
   void makeChoice(char choice);
   void openInventory(bool isOpen);
+  void catchPoki(Pokimac * poki);
+  void openTeam(bool isOpen);
 
 private:
   Map map;
