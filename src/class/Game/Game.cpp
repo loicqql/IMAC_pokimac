@@ -62,11 +62,11 @@ void Game::makeChoice(char choice) {
         if(Game::player->inventory->getNbItem(0)==0 && Game::player->inventory->getNbItem(1)==0){
           cout << "Inventaire vide !" << endl;
         }else{
-          openInventory(true);
+          openInventory();
         }
         break;
       case 'v':
-        openTeam(true);
+        openTeam();
       default: break;
       }
     }
@@ -126,7 +126,7 @@ void Game::displayMap() {
   event.clearLogs();
 }
 
-void Game::openInventory(bool isOpen){
+void Game::openInventory(){
   ConsoleUtils::clear();
   ConsoleUtils::setCursorPos(0, 0);
   Game::player->inventory->displayInventory();
@@ -149,13 +149,14 @@ void Game::openInventory(bool isOpen){
             case 'c': //pokiball
                 if(Game::player->inventory->getNbItem(1) > 0){
                     Game::player->inventory->rmItem(1);
-                    //ajouter fonction capturer pokimac
                     catchPoki(pokimac);
-                    exitLoop=true;
-
+                    //exitLoop=true;
                 }else{
                     cout << "Impossible, plus de pokiball !"<<endl;
                 }
+                break;
+              default:
+                exitLoop = true;
                 break;
         }
       } 
@@ -169,28 +170,25 @@ void Game::openInventory(bool isOpen){
 }
 
 void Game::catchPoki(Pokimac *poki){
-  if(poki->getHealth()>50 && (rand()%100 < 50)){ //cas pv poki > 50 : 50% de succès
-    Game::player->inventory->addPoki(poki);
-    game_mode = POKIMAC_DEFEATED;
-    pokimac->setDefeated(true);
-    event.pokimacCaught(poki);
-  }else if((poki->getHealth()<=50) && (poki->getHealth()>20 && (rand()%100 < 75))){ //cas 50 >= pv poki > 20 : 75% de succès
-    Game::player->inventory->addPoki(poki);
-    game_mode = POKIMAC_DEFEATED;
-    pokimac->setDefeated(true);
-    event.pokimacCaught(poki);
-  }else if(poki->getHealth()<=20 && (rand()%100 < 90)){//cas pv poki < 20 : 90% de succès
-    Game::player->inventory->addPoki(poki);
-    game_mode = POKIMAC_DEFEATED;
-    pokimac->setDefeated(true);
-    event.pokimacCaught(poki);
-  }else{
-    event.addLog("Oh-oh, Poki s'est échappé de sa pokiball !");
-    event.playerAttackPokimac(player, pokimac);
+  if(Game::player->inventory->getTeamSize() < TEAM_CAPACITY){//cas team pas remplie
+    if(
+      ( (poki->getHealth()>50) && (rand()%100 < 50) ) //sous-cas pv poki > 50 : 50% de succès
+      || ( (poki->getHealth()<=50) && (poki->getHealth()>20) && (rand()%100 < 75) ) //sous-cas 50 >= pv poki > 20 : 75% de succès
+      || ( (poki->getHealth()<=20) && (rand()%100 < 90) )//sous-cas pv poki < 20 : 90% de succès
+      ){
+      Game::player->inventory->addPoki(poki);
+      game_mode = POKIMAC_DEFEATED;
+      event.pokimacCaught(poki);
+    }else{//capture échouée
+      event.addLog("Oh-oh, Poki s'est échappé de sa pokiball !");
+      event.playerAttackPokimac(player, pokimac);
+    }
+  }else{//cas team remplie
+    event.addLog("Impossible ! Equipe déjà au complet !");
   }
 } 
 
-void Game::openTeam(bool isOpen){
+void Game::openTeam(){
   ConsoleUtils::clear();
   ConsoleUtils::setCursorPos(0, 0);
   Game::player->inventory->showTeam();

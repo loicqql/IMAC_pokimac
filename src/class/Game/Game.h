@@ -17,9 +17,9 @@ public:
   Game(Player *p_player);
   void movePlayer(char dir);
   void makeChoice(char choice);
-  void openInventory(bool isOpen);
+  void openInventory();
   void catchPoki(Pokimac * poki);
-  void openTeam(bool isOpen);
+  void openTeam();
 
 private:
   Map map;

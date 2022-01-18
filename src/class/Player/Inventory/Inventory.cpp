@@ -25,6 +25,7 @@ void Inventory::displayInventory(){
     cout << endl << "Inventaire :" << endl;
     cout << "x: Utiliser potion : reste " << potion << endl;
     cout << "c: Utiliser pokiball : reste " << pokiball << endl;
+    cout << "espace: Revenir au combat" << endl;
     cout << endl << "";
 }
 
@@ -53,16 +54,20 @@ Pokimac * Inventory::getTeam(){
 void Inventory::addPoki(Pokimac * poki){
     if(team_size < TEAM_CAPACITY){
         team[team_size]= poki;
+        poki->setDefeated(true);
         team_size++;
     }else{
-        cout << "Plus de place dans l'équipe !"<<endl;
+        cout << "Erreur. Plus de place."<<endl;
     }
 }
 
 void Inventory::showTeam(){
-    cout << "Cliquez n'importe où pour revenir au combat" << endl;
+    cout << "espace: revenir au combat" << endl;
     for(int i=0;i< team_size;i++){
         cout << i+1 << ". " << team[i]->getName() << " : " << team[i]->getHealth() << " pv | " << team[i]->getDamage() << " dmg "<<endl;
     }
-    
+}
+
+int Inventory::getTeamSize(){
+    return team_size;
 }

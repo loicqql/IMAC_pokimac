@@ -51,8 +51,7 @@ void Event::playerDefeated() {
 
 void Event::pokimacCaught(Pokimac *p_pokimac){
   initEvent();
-  cout << "Bravo ! " + p_pokimac->getName() + " est capturé !" << endl;
-  cout << endl << "a: Continuer" << endl;  
+  addLog("Bravo ! " + p_pokimac->getName() + " est capturé !\na: Continuer");
 }
 
 void Event::addLog(string text) {

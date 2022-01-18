@@ -24,6 +24,7 @@ class Inventory {
         Pokimac * getTeam();
         void addPoki(Pokimac * poki);
         void showTeam();
+        int getTeamSize();
 
     private :
         //int size = SIZE_INVENTORY;
