@@ -19,6 +19,7 @@ public:
   void pokimacDefeated(Pokimac *p_pokimac);
   void playerDefeated();
   void pokimacCaught(Pokimac *p_pokimac);
+  void displayInventory(Player *p_player);
 
 private:
   void initEvent();

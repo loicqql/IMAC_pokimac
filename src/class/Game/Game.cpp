@@ -60,7 +60,7 @@ void Game::makeChoice(char choice) {
         break;
       case 'c':
         if(Game::player->inventory->getNbItem(0)==0 && Game::player->inventory->getNbItem(1)==0){
-          cout << "Inventaire vide !" << endl;
+          event.addLog("Inventaire vide !");
         }else{
           openInventory();
         }
@@ -129,7 +129,7 @@ void Game::displayMap() {
 void Game::openInventory(){
   ConsoleUtils::clear();
   ConsoleUtils::setCursorPos(0, 0);
-  Game::player->inventory->displayInventory();
+  event.displayInventory(player);
   //choix objet inventaire
   bool exitLoop = false;
   while (!exitLoop) {
@@ -138,21 +138,21 @@ void Game::openInventory(){
       int c = ConsoleUtils::getChar(&special); // Get character
         switch (c) {
             case 'x': //potion (soigne de 20)
-                if(Game::player->inventory->getNbItem(0) > 0){
-                    Game::player->inventory->rmItem(0);
+                if(player->inventory->getNbItem(0) > 0){
+                    player->inventory->rmItem(0);
                     player->inventory->getTeam()[0].addHealth(20);
                     exitLoop=true;
                 }else{
-                    cout << "Impossible, plus de potion de soin !"<<endl;
+                    event.addLog("Impossible, plus de potion de soin !");
                 }
                 break;
             case 'c': //pokiball
-                if(Game::player->inventory->getNbItem(1) > 0){
-                    Game::player->inventory->rmItem(1);
+                if(player->inventory->getNbItem(1) > 0){
+                    player->inventory->rmItem(1);
                     catchPoki(pokimac);
                     //exitLoop=true;
                 }else{
-                    cout << "Impossible, plus de pokiball !"<<endl;
+                    event.addLog("Impossible, plus de pokiball !");
                 }
                 break;
               default:
@@ -170,13 +170,13 @@ void Game::openInventory(){
 }
 
 void Game::catchPoki(Pokimac *poki){
-  if(Game::player->inventory->getTeamSize() < TEAM_CAPACITY){//cas team pas remplie
+  if(player->inventory->getTeamSize() < TEAM_CAPACITY){//cas team pas remplie
     if(
       ( (poki->getHealth()>50) && (rand()%100 < 50) ) //sous-cas pv poki > 50 : 50% de succès
       || ( (poki->getHealth()<=50) && (poki->getHealth()>20) && (rand()%100 < 75) ) //sous-cas 50 >= pv poki > 20 : 75% de succès
       || ( (poki->getHealth()<=20) && (rand()%100 < 90) )//sous-cas pv poki < 20 : 90% de succès
       ){
-      Game::player->inventory->addPoki(poki);
+      player->inventory->addPoki(poki);
       game_mode = POKIMAC_DEFEATED;
       event.pokimacCaught(poki);
     }else{//capture échouée
@@ -191,7 +191,7 @@ void Game::catchPoki(Pokimac *poki){
 void Game::openTeam(){
   ConsoleUtils::clear();
   ConsoleUtils::setCursorPos(0, 0);
-  Game::player->inventory->showTeam();
+  player->inventory->showTeam();
   bool exitLoop=false;
   while (!exitLoop) {
     if (ConsoleUtils::kbhit()) { //if a key is pressed

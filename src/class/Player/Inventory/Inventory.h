@@ -16,7 +16,6 @@ class Inventory {
 
         //pour int item > potion = 0 / pokiball = 1
         int getNbItem(int item);
-        void displayInventory();
         void rmItem(int item);
         void addItem(int item);
 

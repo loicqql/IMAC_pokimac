@@ -21,14 +21,6 @@ int Inventory::getNbItem(int item){
     return -1;
 }
 
-void Inventory::displayInventory(){
-    cout << endl << "Inventaire :" << endl;
-    cout << "x: Utiliser potion : reste " << potion << endl;
-    cout << "c: Utiliser pokiball : reste " << pokiball << endl;
-    cout << "espace: Revenir au combat" << endl;
-    cout << endl << "";
-}
-
 void Inventory::rmItem(int item){
     if(item == 0){
         //cout << "Vous avez utilisé une potion de soin : +20 pv"<<endl;

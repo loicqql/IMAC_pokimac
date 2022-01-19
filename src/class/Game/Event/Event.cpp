@@ -54,13 +54,21 @@ void Event::pokimacCaught(Pokimac *p_pokimac){
   addLog("Bravo ! " + p_pokimac->getName() + " est capturé !\na: Continuer");
 }
 
+void Event::displayInventory(Player *p_player){
+  cout << endl << "Inventaire :" << endl;
+  cout << "x: Utiliser potion : reste " <<  p_player->inventory->getNbItem(0) << " (+20 PV) " <<  endl;
+  cout << "c: Utiliser pokiball : reste " <<  p_player->inventory->getNbItem(1) << endl;
+  cout << "espace: Revenir au combat" << endl;
+  cout << endl << "";
+}
+
 void Event::addLog(string text) {
   logs.push_back(text);
   displayLogs();
 }
 
 void Event::displayLogs() {
-  ConsoleUtils::setCursorPos(0, 11);
+  ConsoleUtils::setCursorPos(0, 15);
   for(std::size_t i = 0; i < logs.size(); ++i){
     cout << logs[i] << endl;
   }
