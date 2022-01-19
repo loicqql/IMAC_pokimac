@@ -33,8 +33,8 @@ class Map {
 	private:
 		int width = SIZE_MAP;
 		int height = SIZE_MAP;
-		Pokimac pokis[NB_POKIS];
-		Cell tab[SIZE_MAP*SIZE_MAP];
+		Pokimac *pokis[NB_POKIS];
+		Cell *tab[SIZE_MAP*SIZE_MAP];
 
 		void setupGrass();
 		void setupPokimacs();
