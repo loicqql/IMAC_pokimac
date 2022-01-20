@@ -2,10 +2,6 @@
 
 #include "../../Pokimac/Pokimac.h"
 
-#define DISPLAY_VOID '.'
-#define DISPLAY_POTION 'Potion'
-#define DISPLAY_POKIBALL 'Pokiball'
-
 #define TEAM_CAPACITY 6
 
 using namespace std;

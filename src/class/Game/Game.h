@@ -9,6 +9,7 @@
 #define FIGHT 1
 #define POKIMAC_DEFEATED 2
 #define PLAYER_DEFEATED 3
+#define ITEM 3
 
 using namespace std;
 

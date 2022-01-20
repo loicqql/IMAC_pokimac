@@ -15,6 +15,9 @@ void Game::movePlayer(char dir) {
   x = player->getX();
   y = player->getY();
 
+  int nbItems;
+  string text;
+
   if(game_mode == MAP_DISPLAYED) {
     // cout << x << " " << y;
     ConsoleUtils::setCursorPos(x, y); std::cout << map.getDisplayByCoords(x, y);
@@ -41,7 +44,38 @@ void Game::movePlayer(char dir) {
       event.playerAttackPokimac(player, pokimac);
     }
     break;
-  
+  case POTION:
+    game_mode = ITEM;
+    player->inventory->addItem(0);
+    nbItems = player->inventory->getNbItem(0);
+    text = nbItems == 1 ? " potion." : " potions.";
+    event.displayMessage("Tu as trouvé une potion. Tu as maintenant " + std::to_string(nbItems) + text);
+    map.setValueByCoords(x, y, VOID);
+    break;
+  case HIDDEN_POTION:
+    game_mode = ITEM;
+    player->inventory->addItem(0);
+    nbItems = player->inventory->getNbItem(0);
+    text = nbItems == 1 ? " potion." : " potions.";
+    event.displayMessage("Tu as trouvé une potion. Tu as maintenant " + std::to_string(nbItems) + text);
+    map.setValueByCoords(x, y, GRASS);
+    break;
+  case POKIBALL:
+    game_mode = ITEM;
+    player->inventory->addItem(1);
+    nbItems = player->inventory->getNbItem(1);
+    text = nbItems == 1 ? " pokiball." : " pokiballs.";
+    event.displayMessage("Tu as trouvé une pokiball. Tu as maintenant " + std::to_string(nbItems) + text);
+    map.setValueByCoords(x, y, VOID);
+    break;
+  case HIDDEN_POKIBALL:
+    game_mode = ITEM;
+    player->inventory->addItem(1);
+    nbItems = player->inventory->getNbItem(1);
+    text = nbItems == 1 ? " pokiball." : " pokiballs.";
+    event.displayMessage("Tu as trouvé une pokiball. Tu as maintenant " + std::to_string(nbItems) + text);
+    map.setValueByCoords(x, y, GRASS);
+    break;
   default:
     break;
   }
@@ -59,7 +93,7 @@ void Game::makeChoice(char choice) {
         combat(false);
         break;
       case 'c':
-        if(Game::player->inventory->getNbItem(0)==0 && Game::player->inventory->getNbItem(1)==0){
+        if(player->inventory->getNbItem(0)==0 && player->inventory->getNbItem(1)==0){
           event.addLog("Inventaire vide !");
         }else{
           openInventory();
@@ -72,6 +106,15 @@ void Game::makeChoice(char choice) {
       }
     }
     if(game_mode == POKIMAC_DEFEATED) {
+      switch (choice) {
+      case 'a':
+        game_mode = MAP_DISPLAYED;
+        displayMap();
+        break;
+      default: break;
+      }
+    }
+    if(game_mode == ITEM) {
       switch (choice) {
       case 'a':
         game_mode = MAP_DISPLAYED;

@@ -49,6 +49,12 @@ void Event::playerDefeated() {
   cout << endl << "espace: quitter" << endl;
 }
 
+void Event::displayMessage(string text) {
+  initEvent();
+  cout << text;
+  cout << endl << "a: Continuer" << endl;
+}
+
 void Event::pokimacCaught(Pokimac *p_pokimac){
   initEvent();
   addLog("Bravo ! " + p_pokimac->getName() + " est capturé !\na: Continuer");

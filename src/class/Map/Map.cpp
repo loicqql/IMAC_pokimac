@@ -9,17 +9,17 @@ using namespace std;
 
 Map::Map() {
 
-  //ne pas changer l'ordre
+  
   
   for (int i = 0; i < SIZE_MAP*SIZE_MAP; i++) {
     Cell *cell = new Cell;
     tab[i] = cell;
   }
   
-
+  //ne pas changer l'ordre
   setupPokimacs();
   setupGrass();
-
+  setupItems();
   displayMap();
   
 }
@@ -35,6 +35,10 @@ void Map::displayMap() {
 
 int Map::getValueByCoords(int x, int y) {
   return tab[y * SIZE_MAP + x]->getValue();
+}
+
+void Map::setValueByCoords(int x, int y, int value) {
+  return tab[y * SIZE_MAP + x]->setValue(value);
 }
 
 Pokimac * Map::getPokimacByCoords(int x, int y) {
@@ -64,6 +68,18 @@ char Map::getDisplayByCoords(int x, int y) {
     }else {
       charDisplay = DISPLAY_POKIMAC;
     }
+    break;
+  case POTION:
+      charDisplay = DISPLAY_POTION;
+    break;
+  case HIDDEN_POTION:
+      charDisplay = DISPLAY_HIDDEN_POTION;
+    break;
+  case POKIBALL:
+      charDisplay = DISPLAY_POKIBALL;
+    break;
+  case HIDDEN_POKIBALL:
+      charDisplay = DISPLAY_HIDDEN_POKIBALL;
     break;
   default:
     charDisplay = DISPLAY_VOID;
@@ -118,5 +134,46 @@ void Map::setupGrass() {
   for (int i = 0; i < 6; i++) {
     tab[tabGrass5[i]]->setValue(tab[i]->getValue() == POKIMAC ? HIDDEN_POKIMAC : GRASS);
   }
+  
+}
+
+void Map::setupItems() {
+  int coordsItems;
+  int i;
+  srand((unsigned)time(0));
+
+  //POTIONS
+  for ( i = 0; i < NB_POTIONS; i++) {
+    do {
+      coordsItems = ((rand()%(SIZE_MAP*SIZE_MAP))+1);
+    } while(tab[coordsItems]->getValue() != VOID && tab[coordsItems]->getValue() != GRASS);
+
+    if(tab[coordsItems]->getValue() == VOID) {
+      tab[coordsItems]->setValue(POTION);
+    }else {
+      tab[coordsItems]->setValue(HIDDEN_POTION);
+    }
+  }
+
+  if(tab[coordsItems]->getValue() == VOID) {
+    tab[coordsItems]->setValue(POTION);
+  }else {
+    tab[coordsItems]->setValue(HIDDEN_POTION);
+  }
+
+  //POKIBALLS
+  for (i = 0; i < NB_POKIBALLS; i++) {
+    do {
+      coordsItems = ((rand()%(SIZE_MAP*SIZE_MAP))+1);
+    } while(tab[coordsItems]->getValue() != VOID && tab[coordsItems]->getValue() != GRASS);
+
+    if(tab[coordsItems]->getValue() == VOID) {
+      tab[coordsItems]->setValue(POKIBALL);
+    }else {
+      tab[coordsItems]->setValue(HIDDEN_POKIBALL);
+    }
+  }
+  
+  
   
 }
