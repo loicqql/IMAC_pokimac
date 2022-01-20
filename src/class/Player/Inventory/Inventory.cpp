@@ -60,6 +60,7 @@ void Inventory::addPoki(Pokimac * poki){
 }
 
 void Inventory::showTeam(){
+    char letters[7] = {'a', 'z', 'e', 'r', 't', 'y', '\0' };
     cout << "espace: revenir au combat" << endl;
     if(team_size>1){
         cout << "Appuyer sur une des lettres pour changer de pokimac" << endl;
@@ -68,7 +69,7 @@ void Inventory::showTeam(){
     char letter;
     cout << team[0]->getName() << " : " << team[0]->getHealth() << " pv | " << team[0]->getDamage() << " dmg | " << team[0]->getExp() << " % d\'xp (en combat)"<<endl; 
     for(int i=1;i< team_size;i++){
-        letter = '`' + i;
+        letter = letters[i-1];
         cout << letter << ". " << team[i]->getName() << " > " << team[i]->getHealth() << " pv | " << team[i]->getDamage() << " dmg | " << team[i]->getExp() << " % d\'xp" <<endl;
     }
 }

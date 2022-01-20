@@ -212,22 +212,22 @@ void Game::openTeam(){
             exitLoop = true;
           }
           break;
-        case 'b':
+        case 'z':
           if(player->inventory->switchPokimac(2)){
             exitLoop = true;
           }
           break;
-        case 'c':
+        case 'e':
           if(player->inventory->switchPokimac(3)){
             exitLoop = true;
           }
           break;
-        case 'd':
+        case 'r':
           if(player->inventory->switchPokimac(4)){
             exitLoop = true;
           }
           break;
-        case 'e':
+        case 't':
           if(player->inventory->switchPokimac(5)){
             exitLoop = true;
           }
