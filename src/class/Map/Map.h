@@ -59,5 +59,5 @@ class Map {
 		void setupPokimacs();
 		void setupItems();
 
-		std::vector<string> names = {"Pimachu", "Rhinovelli", "Évolimac", "Rondimac", "Leuphorieu", "Rozlem", "Steevlix", "Kevenipatte", "Laporteille",  "Mister Jirachi", "Miss Jirachi", "Salidimac", "Robimac", "Tortimac", "Dracimac"}; 
+		std::vector<string> names = {"Pimachu", "Rhinovelli", "Évolimac", "Rondimac", "Leuphorieu", "Rozlem", "Steevlix", "Kevenipatte", "Laporteille", "Salidimac", "Robimac", "Tortimac", "Dracimac", "Mister Jirachi", "Miss Jirachi"}; 
 };

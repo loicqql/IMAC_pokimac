@@ -32,7 +32,7 @@ class Player {
     string name;
     //int health;
     //int damage;
-    int exp;
+    // int exp;
     int x;
     int y;
 

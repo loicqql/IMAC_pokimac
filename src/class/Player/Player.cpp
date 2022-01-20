@@ -7,7 +7,7 @@ using namespace std;
 Player::Player(Inventory *p_inventory) {
   x = 0;
   y = 0;
-  exp = 50;
+  // exp = 50;
   inventory = p_inventory;
 }
 
@@ -33,13 +33,13 @@ int Player::getY() {
 
 // Exp
 
-int Player::getExp() {
-  return exp;
-}
+// int Player::getExp() {
+//   return exp;
+// }
 
-void Player::addExp(int nbExp) {
-  exp = exp + nbExp;
-}
+// void Player::addExp(int nbExp) {
+//   exp = exp + nbExp;
+// }
 
 // Map
 
