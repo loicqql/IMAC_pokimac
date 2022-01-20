@@ -41,6 +41,14 @@ Pokimac * Inventory::getTeam(){
     return *team;
 }
 
+void Inventory::rmFirstPoki(){
+    for(int i=0;i<team_size-1;i++){
+        team[i]=team[i+1];
+    }
+    team[team_size]=nullptr;
+    team_size--;
+}
+
 void Inventory::addPoki(Pokimac * poki){
     if(team_size < TEAM_CAPACITY){
         team[team_size]= poki;

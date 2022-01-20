@@ -25,6 +25,7 @@ class Inventory {
         void showTeam();
         int getTeamSize();
         bool switchPokimac(int numPoki);
+        void rmFirstPoki();
 
     private :
         int potion;

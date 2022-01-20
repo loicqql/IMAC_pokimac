@@ -67,6 +67,7 @@ void Game::makeChoice(char choice) {
         break;
       case 'v':
         openTeam();
+        break;
       default: break;
       }
     }
@@ -89,20 +90,28 @@ void Game::combat(bool isAttack) {
     int damage = player->inventory->getTeam()[0].attack(pokimac);
     if(pokimac->getHealth() > 0) {
       // player attack pokimac
-      event.addLog(damage == 0 ? "Tu n'as pas réussi à faire de dégâts" : "Tu as réussi à faire " + to_string(damage) + " points de dégâts à " + pokimac->getName());
+      event.addLog(damage == 0 ? "Ton " + player->inventory->getTeam()[0].getName() + " n'a pas réussi à faire de dégâts" :  "Ton " + player->inventory->getTeam()[0].getName() + " a réussi à faire " + to_string(damage) + " points de dégâts à " + pokimac->getName() + " adverse");
 
       // pokimac attack player
-      int nb = ((rand()%10)+1)*10;
-      if(pokimac->getExp() >= nb) {
-        event.addLog(pokimac->getName() + " n'a pas réussi à te faire de dégâts");
+      int nb = rand() % 100 + 1;
+      if(pokimac->getExp() < nb) {
+        event.addLog(pokimac->getName() + " adverse n'a pas réussi à faire de dégâts");
       }else {
         player->inventory->getTeam()[0].setHealth(pokimac->getDamage());
-        event.addLog(pokimac->getName() + " t'a infligé " + to_string(pokimac->getDamage()) + " points de dégâts");
+        event.addLog(pokimac->getName() + " adverse a infligé " + to_string(pokimac->getDamage()) + " points de dégâts");
       }
 
       if(player->inventory->getTeam()[0].getHealth() <= 0) {
-        game_mode = PLAYER_DEFEATED;
-        event.playerDefeated();
+        if(player->inventory->getTeamSize()<2){
+          game_mode = PLAYER_DEFEATED;
+          event.playerDefeated();
+        }else{
+          event.addLog(player->inventory->getTeam()[0].getName() + " est mort");
+          player->inventory->rmFirstPoki();
+          
+          event.playerAttackPokimac(player, pokimac);
+        }
+
       }else {
         // reset display
         event.playerAttackPokimac(player, pokimac);
@@ -161,7 +170,6 @@ void Game::openInventory(){
         }
       } 
   }
-  event.clearLogs();
   if(pokimac->isDefeated()){
     game_mode = MAP_DISPLAYED;
     displayMap();
