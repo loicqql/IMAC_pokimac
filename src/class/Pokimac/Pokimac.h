@@ -23,6 +23,7 @@ class Pokimac {
     void setName(string username);
     void addDamage(int nbDamage);
     void setCoords(int coords);
+    void addExp(int nbExp);
 
     void setStarter();
     

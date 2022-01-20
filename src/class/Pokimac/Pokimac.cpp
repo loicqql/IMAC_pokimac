@@ -70,6 +70,13 @@ int Pokimac::getExp() {
   return exp;
 }
 
+void Pokimac::addExp(int nbExp) {
+  exp = exp + nbExp;
+  if(exp > 100) {
+    exp = 100;
+  }
+}
+
 // Defeated
 
 bool Pokimac::isDefeated() {

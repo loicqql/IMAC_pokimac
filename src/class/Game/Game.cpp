@@ -165,6 +165,7 @@ void Game::combat(bool isAttack) {
       game_mode = POKIMAC_DEFEATED;
       pokimac->setDefeated(true);
       event.pokimacDefeated(pokimac);
+      player->inventory->getTeam()[0].addExp(20);
     }
     
   }else {

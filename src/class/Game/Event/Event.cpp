@@ -38,7 +38,7 @@ void Event::playerAttackPokimac(Player *p_player, Pokimac *p_pokimac) {
 
 void Event::pokimacDefeated(Pokimac *p_pokimac) {
   initEvent();
-  cout << "Tu as vaincu " + p_pokimac->getName() << endl;
+  cout << "Tu as vaincu " + p_pokimac->getName() << " (+20 exp pour ton pokimac)" << endl;
   cout << endl << "a: Continuer" << endl;
 }
 
