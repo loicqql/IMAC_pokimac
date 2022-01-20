@@ -108,7 +108,7 @@ void Game::combat(bool isAttack) {
         }else{
           event.addLog(player->inventory->getTeam()[0].getName() + " est mort");
           player->inventory->rmFirstPoki();
-          
+          event.addLog("Go " + player->inventory->getTeam()[0].getName() + ", à ton tour !");
           event.playerAttackPokimac(player, pokimac);
         }
 
