@@ -97,5 +97,6 @@ int Pokimac::attack(Pokimac *p_pokimac) {
 void Pokimac::setStarter(){
   health = 100;
   damage = 30;
+  exp=50;
   setName("Pokistarter");
 }

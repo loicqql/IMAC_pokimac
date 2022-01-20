@@ -12,10 +12,10 @@ void Event::playerAttackPokimac(Player *p_player, Pokimac *p_pokimac) {
   cout << "Tu as rencontré un pokimac !" << endl;
   cout << "Que souhaites-tu faire ?" << endl;
 
-  cout << endl << "Les stats de ton poki :" << endl;
+  cout << endl << "Les stats de ton " << p_player->inventory->getTeam()[0].getName() << " : " << endl;
   cout << "Vie : " <<  p_player->inventory->getTeam()[0].getHealth() << endl;
   cout << "Points de dégâts : " <<  p_player->inventory->getTeam()[0].getDamage() << endl;
-  cout << "Expérience : " <<  p_player->getExp() << "%" << endl;
+  cout << "Expérience : " <<  p_player->inventory->getTeam()[0].getExp() << "%" << endl;
 
   cout << endl << "w: Attaquer" << endl;
   cout << "x: Fuir" << endl;

@@ -23,10 +23,8 @@ int Inventory::getNbItem(int item){
 
 void Inventory::rmItem(int item){
     if(item == 0){
-        //cout << "Vous avez utilisé une potion de soin : +20 pv"<<endl;
         potion--;
     }else if(item == 1){
-        //cout << "Vous avez utilisé une pokiball"<<endl;
         pokiball--;
     }
 }
@@ -55,11 +53,30 @@ void Inventory::addPoki(Pokimac * poki){
 
 void Inventory::showTeam(){
     cout << "espace: revenir au combat" << endl;
-    for(int i=0;i< team_size;i++){
-        cout << i+1 << ". " << team[i]->getName() << " : " << team[i]->getHealth() << " pv | " << team[i]->getDamage() << " dmg "<<endl;
+    if(team_size>1){
+        cout << "Appuyer sur une des lettres pour changer de pokimac" << endl;
+    }
+    cout << "Équipe :" << endl;
+    char letter;
+    cout << team[0]->getName() << " : " << team[0]->getHealth() << " pv | " << team[0]->getDamage() << " dmg | " << team[0]->getExp() << " % d\'xp (en combat)"<<endl; 
+    for(int i=1;i< team_size;i++){
+        letter = '`' + i;
+        cout << letter << ". " << team[i]->getName() << " > " << team[i]->getHealth() << " pv | " << team[i]->getDamage() << " dmg | " << team[i]->getExp() << " % d\'xp" <<endl;
     }
 }
 
 int Inventory::getTeamSize(){
     return team_size;
+}
+
+bool Inventory::switchPokimac(int numPoki){
+    if(team_size>numPoki){
+        Pokimac *temp;
+        temp = team[0];
+        team[0]=team[numPoki];
+        team[numPoki]=temp;
+        return true;
+    }else{
+        return false;
+    }
 }

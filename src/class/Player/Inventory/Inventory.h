@@ -6,7 +6,7 @@
 #define DISPLAY_POTION 'Potion'
 #define DISPLAY_POKIBALL 'Pokiball'
 
-#define TEAM_CAPACITY 15
+#define TEAM_CAPACITY 6
 
 using namespace std;
 
@@ -24,10 +24,9 @@ class Inventory {
         void addPoki(Pokimac * poki);
         void showTeam();
         int getTeamSize();
+        bool switchPokimac(int numPoki);
 
     private :
-        //int size = SIZE_INVENTORY;
-        //vector<Item> items[SIZE_INVENTORY];
         int potion;
         int pokiball;
         Pokimac * team[TEAM_CAPACITY];

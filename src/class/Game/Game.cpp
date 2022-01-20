@@ -161,6 +161,7 @@ void Game::openInventory(){
         }
       } 
   }
+  event.clearLogs();
   if(pokimac->isDefeated()){
     game_mode = MAP_DISPLAYED;
     displayMap();
@@ -198,11 +199,36 @@ void Game::openTeam(){
       bool special = false;
       int c = ConsoleUtils::getChar(&special); // Get character
       switch (c) {
+        case 'a':
+          if(player->inventory->switchPokimac(1)){//vérifie que pokimac existe dans l'équipe
+            exitLoop = true;
+          }
+          break;
+        case 'b':
+          if(player->inventory->switchPokimac(2)){
+            exitLoop = true;
+          }
+          break;
+        case 'c':
+          if(player->inventory->switchPokimac(3)){
+            exitLoop = true;
+          }
+          break;
+        case 'd':
+          if(player->inventory->switchPokimac(4)){
+            exitLoop = true;
+          }
+          break;
+        case 'e':
+          if(player->inventory->switchPokimac(5)){
+            exitLoop = true;
+          }
+          break;
         default:
           exitLoop = true;
-          event.playerAttackPokimac(player, pokimac);
           break;
       }
     }
   }
+  event.playerAttackPokimac(player, pokimac);
 }
