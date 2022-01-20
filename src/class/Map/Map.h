@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 #include "Cell/Cell.h"
 
 #define SIZE_MAP 20
@@ -57,4 +58,6 @@ class Map {
 		void setupGrass();
 		void setupPokimacs();
 		void setupItems();
+
+		std::vector<string> names = {"Pimachu", "Rhinovelli", "Évolimac", "Rondimac", "Leuphorieu", "Rozlem", "Steevlix", "Kevenipatte", "Laporteille",  "Mister Jirachi", "Miss Jirachi", "Salidimac", "Robimac", "Tortimac", "Dracimac"}; 
 };

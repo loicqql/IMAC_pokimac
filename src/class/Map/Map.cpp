@@ -95,6 +95,7 @@ void Map::setupPokimacs() {
   Pokimac *poki;
   for (int i = 0; i < NB_POKIS; i++) {
     poki = new Pokimac;
+    poki->setName(names[i]);
     pokis[i] = poki;
     do {
       coordsDuPoki = ((rand()%(SIZE_MAP*SIZE_MAP))+1); // entre 0 et 400
@@ -173,7 +174,5 @@ void Map::setupItems() {
       tab[coordsItems]->setValue(HIDDEN_POKIBALL);
     }
   }
-  
-  
   
 }
