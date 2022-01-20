@@ -8,8 +8,8 @@
 using namespace std;
 
 Pokimac::Pokimac() {
-  health = rand() % 100 + 1;
-  damage = rand() % 100 + 1;
+  health = ((rand()%10)+1)*10;
+  damage = ((rand()%10)+1)*10;
   exp = ((rand()%6)+5)*10;
   name = "Poki";
   defeated = false;
@@ -83,7 +83,7 @@ void Pokimac::setDefeated(bool isDefeated) {
 // Attack
 
 int Pokimac::attack(Pokimac *p_pokimac) {
-  int nb = rand() % 100 + 1;
+  int nb = ((rand()%10)+1)*10;
   if(exp >= nb) {
     p_pokimac->setHealth(damage);
     return damage;
@@ -95,7 +95,7 @@ int Pokimac::attack(Pokimac *p_pokimac) {
 // Starter
 
 void Pokimac::setStarter(){
-  health = 100;
+  health = 10;
   damage = 30;
   exp=50;
   setName("Pokistarter");

@@ -93,7 +93,7 @@ void Game::combat(bool isAttack) {
       event.addLog(damage == 0 ? "Ton " + player->inventory->getTeam()[0].getName() + " n'a pas réussi à faire de dégâts" :  "Ton " + player->inventory->getTeam()[0].getName() + " a réussi à faire " + to_string(damage) + " points de dégâts à " + pokimac->getName() + " adverse");
 
       // pokimac attack player
-      int nb = rand() % 100 + 1;
+      int nb = ((rand()%10)+1)*10;
       if(pokimac->getExp() < nb) {
         event.addLog(pokimac->getName() + " adverse n'a pas réussi à faire de dégâts");
       }else {
