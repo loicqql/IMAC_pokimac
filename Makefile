@@ -21,7 +21,7 @@ build/pokimac.o: src/class/Pokimac/Pokimac.cpp src/class/Pokimac/Pokimac.h
 	$(CC) -o $@ -c $<
 
 build/cell.o: src/class/Map/Cell/Cell.cpp src/class/Map/Cell/Cell.h
-	$(CC) -o $@ -c $
+	$(CC) -o $@ -c $<
 
 build/event.o: src/class/Game/Event/Event.cpp src/class/Game/Event/Event.h
 	$(CC) -o $@ -c $<
