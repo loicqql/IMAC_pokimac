@@ -195,6 +195,7 @@ void Game::openInventory(){
                     player->inventory->rmItem(0);
                     player->inventory->getTeam()[0].addHealth(20);
                     exitLoop=true;
+                    event.clearLogs();
                 }else{
                     event.addLog("Impossible, plus de potion de soin !");
                 }
@@ -210,6 +211,7 @@ void Game::openInventory(){
                 break;
               default:
                 exitLoop = true;
+                event.clearLogs();
                 break;
         }
       } 

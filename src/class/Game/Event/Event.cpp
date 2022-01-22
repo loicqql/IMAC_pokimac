@@ -45,7 +45,7 @@ void Event::pokimacDefeated(Pokimac *p_pokimac) {
 void Event::playerDefeated() {
   initEvent();
   cout << "GAME OVER" << endl;
-  cout << "Tu n'as plus de vie" << endl;
+  cout << "Ton dernier pokimac n'a plus de vie" << endl;
   cout << endl << "espace: quitter" << endl;
 }
 
